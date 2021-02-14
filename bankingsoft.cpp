@@ -3,12 +3,36 @@
 
 using namespace std;
 int main()
-{
+{   frontscreen:
+    std::cout<<"\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK"<<endl;
+    std::cout<<"PLEASE SELECT FROM GIVEN"<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+    std::cout<<""<<endl;
+   
+
+    
     int choice;
-    std::cin<<choice;
+    std::cout<<"ENTER YOUR CHOICE(1-9):-"<<endl;
+    std::cin>>choice;
     switch(choice)
     {
         case 1:
+            
             break;
             
         case 2:
@@ -36,9 +60,11 @@ int main()
             break;
         
         default:
+            std::cout<<"WRONG CHOICE"<<endl;
+            getch();
+            goto frontscreen;
 
     }
     
     return 0;
-}// priyanshu online
-//12345
+}
