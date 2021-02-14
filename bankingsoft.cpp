@@ -49,3 +49,4 @@ int main()
 >>>>>>> c16d74c257b9558b3c523cd2db5a5db0dbf86a91
 
 // ab dikha //
+printf("(*_*)")
