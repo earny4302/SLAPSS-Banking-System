@@ -1,9 +1,34 @@
 #include <iostream>
 #include <conio.h>
-
-
-
+#include<string>
 using namespace std;
+
+class pre_card{
+    char my_name[60];
+    char father_n[60];
+    long mob_no;
+    long id_no;
+    int pin_no;
+
+    public:
+        void get_det();
+        void change_det();
+        void deposit();
+        void credit(int m);
+        void show_bal();
+        
+};
+void get_det(){
+    std::cout<<"ENTER YOUR NAME:-"<<endl;
+    getline(my_name);
+    std::cout<<"ENTER YOUR FATHER'S NAME:-"<<endl;
+    std::cout<<"ENTER YOUR MOBILE NUMBER:-"<<endl;
+    std::cout<<"ENTER YOUR ID NUMBER:-"<<endl;
+    std::cout<<"SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-"<<endl;
+    
+}
+
+
 int main()
 {
     int choice;
