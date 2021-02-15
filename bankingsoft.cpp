@@ -15,7 +15,7 @@ int main()
         std::cout << "01.GET PREPAID CARD" << endl;
         std::cout << "02.OPEN ACCOUNT" << endl;
         std::cout << "03.CLOSE ACCOUNT" << endl;
-        std::cout << "" << endl;
+        std::cout << "04.CHANGE DETAILS" << endl;
         std::cout << "" << endl;
         std::cout << "" << endl;
         std::cout << "" << endl;
