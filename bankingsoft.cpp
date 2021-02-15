@@ -13,8 +13,8 @@ int main()
         std::cout << "\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK" << endl;
         std::cout << "MAIN MENU:-" << endl;
         std::cout << "01.GET PREPAID CARD" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
+        std::cout << "02.OPEN ACCOUNT" << endl;
+        std::cout << "03.CLOSE ACCOUNT" << endl;
         std::cout << "" << endl;
         std::cout << "" << endl;
         std::cout << "" << endl;
