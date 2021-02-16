@@ -1,6 +1,7 @@
 #include <iostream>
 #include <conio.h>
 #include <string>
+#include<stdlib.h>
 using namespace std;
 
 class pre_card
@@ -8,6 +9,7 @@ class pre_card
 public:
     char my_name[60];
     char father_n[60];
+    char mother_n[60];
     long mob_no;
     long id_no;
     int pin_no;
@@ -18,12 +20,49 @@ public:
     void credit(int m);
     void show_bal();
 };
+void pre_card::intro()
+{   int choice;
+    do{
+          std::cout<<""<<endl;
+        std::cout<<"01.APPLY FOR NEW CARD"<<endl;
+        std::cout<<"02.CHANGE DETAILS"<<endl;
+        std::cout<<"03.DEPOSIT MONEY"<<endl;
+        std::cout<<"04.CHECK BALANCE"<<endl;
+        std::cout<<"05.RETURN TO PREVIOUS MENU"<<endl;
+        std::cout<<"ENTER YOUR CHOICE(1-6):-"<<endl;
+        std::cin>>choice;
+
+        switch(choice){
+            case 1:
+                    get_det();
+                break;
+            case 2:
+                    change_det();
+                break;
+            case 3:
+                    deposit();
+                break;
+             case 4:
+                    show_bal();
+                break;
+            case 5:
+                break;
+            
+            default:
+                std::cout<<"WRONG CHOICE"<<endl;
+                getch();
+        }
+
+    }while(choice>5);
+}
 void pre_card::get_det()
 {
     std::cout << "ENTER YOUR NAME:-" << endl;
     gets(my_name);
     std::cout << "ENTER YOUR FATHER'S NAME:-" << endl;
     gets(father_n);
+    std::cout << "ENTER YOUR MOTHER'S NAME:-" << endl;
+    gets(mother_n);
     std::cout << "ENTER YOUR MOBILE NUMBER:-" << endl;
     std::cin >> mob_no;
     std::cout << "ENTER YOUR ID NUMBER:-" << endl;
@@ -49,28 +88,34 @@ void pre_card::change_det()
 
         switch(choice){
             case 1:
-                std::cout<<"ENTER NEW NAME:-"<<endl;
+                std::cout<<"ENTER NAME:-"<<endl;
+                gets(my_name);
                 break;
             case 2:
-                std::cout<<""<<endl;
+                std::cout<<"ENTER FATHER'S NAME:-"<<endl;
+                gets(father_n);
                 break;
             case 3:
-                std::cout<<""<<endl;
+                std::cout<<"ENTER MOTHER'S NAME:-"<<endl;
+                gets(mother_n);
                 break;
             case 4:
-                std::cout<<""<<endl;
+                std::cout<<"ENTER MOBILE NUMBER:-"<<endl;
+                std::cin>>mob_no;
                 break;
             case 5:
-                std::cout<<""<<endl;
+                std::cout<<"ENTER ID NO.:-"<<endl;
+                std::cin>>id_no;
                 break;
             case 6:
-                std::cout<<""<<endl;
+                std::cout<<"ENTER PIN NO:-"<<endl;
+                std::cin>>pin_no;
                 break;
             default:
-                std::cout<<""<<endl;
-        
+                std::cout<<"WRONG CHOICE"<<endl;
+                getch();
         }
-    } while (choice < 6);
+    } while (choice>6);
 };
 
 int main()
