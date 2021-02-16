@@ -49,12 +49,25 @@ void pre_card::change_det()
 
         switch(choice){
             case 1:
+                std::cout<<"ENTER NEW NAME:-"<<endl;
+                break;
             case 2:
+                std::cout<<""<<endl;
+                break;
             case 3:
+                std::cout<<""<<endl;
+                break;
             case 4:
+                std::cout<<""<<endl;
+                break;
             case 5:
+                std::cout<<""<<endl;
+                break;
             case 6:
+                std::cout<<""<<endl;
+                break;
             default:
+                std::cout<<""<<endl;
         
         }
     } while (choice < 6);
