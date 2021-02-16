@@ -11,7 +11,7 @@ public:
     long mob_no;
     long id_no;
     int pin_no;
-
+    void intro();
     void get_det();
     void change_det();
     void deposit();
@@ -37,16 +37,26 @@ void pre_card::change_det()
     int choice;
     do
     {
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
-        std::cout<<""<<endl;
+        std::cout<<"WHAT YOU WANT TO CHANGE:-"<<endl;
+        std::cout<<"01.NAME"<<endl;
+        std::cout<<"02.FATHER'S NAME"<<endl;
+        std::cout<<"03.MATHER'S NAME"<<endl;
+        std::cout<<"04.MOBILE NO."<<endl;
+        std::cout<<"05.ID NUMBER"<<endl;
+        std::cout<<"06.PIN NO"<<endl;
+        std::cout<<"ENTER YOUR CHOICE(1-6):-"<<endl;
+        std::cin>>choice;
 
+        switch(choice){
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            default:
+        
+        }
     } while (choice < 6);
 };
 
