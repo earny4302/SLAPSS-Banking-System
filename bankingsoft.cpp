@@ -1,33 +1,54 @@
 #include <iostream>
 #include <conio.h>
-#include<string>
+#include <string>
 using namespace std;
 
-class pre_card{
+class pre_card
+{
+public:
     char my_name[60];
     char father_n[60];
     long mob_no;
     long id_no;
     int pin_no;
 
-    public:
-        void get_det();
-        void change_det();
-        void deposit();
-        void credit(int m);
-        void show_bal();
-        
+    void get_det();
+    void change_det();
+    void deposit();
+    void credit(int m);
+    void show_bal();
 };
-void get_det(){
-    std::cout<<"ENTER YOUR NAME:-"<<endl;
-    getline(my_name);
-    std::cout<<"ENTER YOUR FATHER'S NAME:-"<<endl;
-    std::cout<<"ENTER YOUR MOBILE NUMBER:-"<<endl;
-    std::cout<<"ENTER YOUR ID NUMBER:-"<<endl;
-    std::cout<<"SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-"<<endl;
-    
-}
+void pre_card::get_det()
+{
+    std::cout << "ENTER YOUR NAME:-" << endl;
+    gets(my_name);
+    std::cout << "ENTER YOUR FATHER'S NAME:-" << endl;
+    gets(father_n);
+    std::cout << "ENTER YOUR MOBILE NUMBER:-" << endl;
+    std::cin >> mob_no;
+    std::cout << "ENTER YOUR ID NUMBER:-" << endl;
+    std::cin >> id_no;
+    std::cout << "SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-" << endl;
+    std::cin >> pin_no;
+};
 
+void pre_card::change_det()
+{
+    int choice;
+    do
+    {
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+        std::cout<<""<<endl;
+
+    } while (choice < 6);
+};
 
 int main()
 {
