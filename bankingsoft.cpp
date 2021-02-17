@@ -4,12 +4,13 @@
 #include<stdlib.h>
 using namespace std;
 
-class pre_card
+class account
 {
 public:
     char my_name[60];
     char father_n[60];
     char mother_n[60];
+    long long acc_bal;
     long mob_no;
     long id_no;
     int pin_no;
@@ -17,45 +18,11 @@ public:
     void get_det();
     void change_det();
     void deposit();
-    void credit(int m);
+    void credit();
     void show_bal();
 };
-void pre_card::intro()
-{   int choice;
-    do{
-          std::cout<<""<<endl;
-        std::cout<<"01.APPLY FOR NEW CARD"<<endl;
-        std::cout<<"02.CHANGE DETAILS"<<endl;
-        std::cout<<"03.DEPOSIT MONEY"<<endl;
-        std::cout<<"04.CHECK BALANCE"<<endl;
-        std::cout<<"05.RETURN TO PREVIOUS MENU"<<endl;
-        std::cout<<"ENTER YOUR CHOICE(1-6):-"<<endl;
-        std::cin>>choice;
 
-        switch(choice){
-            case 1:
-                    get_det();
-                break;
-            case 2:
-                    change_det();
-                break;
-            case 3:
-                    deposit();
-                break;
-             case 4:
-                    show_bal();
-                break;
-            case 5:
-                break;
-            
-            default:
-                std::cout<<"WRONG CHOICE"<<endl;
-                getch();
-        }
-
-    }while(choice>5);
-}
-void pre_card::get_det()
+void account::get_det()
 {
     std::cout << "ENTER YOUR NAME:-" << endl;
     gets(my_name);
@@ -71,7 +38,7 @@ void pre_card::get_det()
     std::cin >> pin_no;
 };
 
-void pre_card::change_det()
+void account::change_det()
 {
     int choice;
     do
@@ -126,16 +93,17 @@ int main()
     {
         std::cout << "\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK" << endl;
         std::cout << "MAIN MENU:-" << endl;
-        std::cout << "01.GET PREPAID CARD" << endl;
-        std::cout << "02.OPEN ACCOUNT" << endl;
-        std::cout << "03.CLOSE ACCOUNT" << endl;
-        std::cout << "04.CHANGE DETAILS" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
+        std::cout << "01.OPEN ACCOUNT" << endl;
+        std::cout << "02.DEPOSIT MONEY" << endl;
+        std::cout << "03." << endl;
+        std::cout << "02.CLOSE ACCOUNT" << endl;
+        std::cout << "03.CHANGE DETAILS" << endl;
+        std::cout << "04.APPLY FOR LOAN" << endl;
+        std::cout << "05.INVEST" << endl;
+        std::cout << "06.APPLY FOR INTERNET BANKING"<< endl;
+        std::cout << "07.SUSPEND INTERNET BANKING" << endl;
+        std::cout << "08.PAYMENT" << endl;
+        std::cout << "09.DONATION" << endl;
         std::cout << "" << endl;
         std::cout << "" << endl;
         std::cout << "" << endl;
