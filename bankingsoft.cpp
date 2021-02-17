@@ -95,7 +95,7 @@ int main()
         std::cout << "MAIN MENU:-" << endl;
         std::cout << "01.OPEN ACCOUNT" << endl;
         std::cout << "02.DEPOSIT MONEY" << endl;
-        std::cout << "03." << endl;
+        std::cout << "01.OPEN ACCOUNT" << endl;
         std::cout << "02.CLOSE ACCOUNT" << endl;
         std::cout << "03.CHANGE DETAILS" << endl;
         std::cout << "04.APPLY FOR LOAN" << endl;
