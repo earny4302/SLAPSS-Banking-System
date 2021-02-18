@@ -4,41 +4,45 @@
 #include <string>
 #include<stdlib.h>
 using namespace std;
-
 class account
 {
 public:
     char my_name[60];
     char father_n[60];
     char mother_n[60];
-    long long acc_bal;
+    char address[120];
+    char  nominee[60];
     long mob_no;
-    long id_no;
-    int pin_no;
+    long addhar_no;
     char login_user[10];
     long long login_pass;
-    void intro();
+    int pin_no;
+    long long acc_bal;
+
     void get_det();
     void change_det();
     void deposit();
     void credit();
     void show_bal();
+    void pay(int);
+    void electricity_pay();
+    void water_pay();
 };
 
 void account::get_det()
 {
-    std::cout << "ENTER YOUR NAME:-" << endl;
+    cout << "ENTER YOUR NAME:-" <<endl;
     gets(my_name);
-    std::cout << "ENTER YOUR FATHER'S NAME:-" << endl;
+    cout << "ENTER YOUR FATHER'S NAME:-" << endl;
     gets(father_n);
-    std::cout << "ENTER YOUR MOTHER'S NAME:-" << endl;
+    cout << "ENTER YOUR MOTHER'S NAME:-" << endl;
     gets(mother_n);
-    std::cout << "ENTER YOUR MOBILE NUMBER:-" << endl;
-    std::cin >> mob_no;
-    std::cout << "ENTER YOUR ID NUMBER:-" << endl;
-    std::cin >> id_no;
-    std::cout << "SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-" << endl;
-    std::cin >> pin_no;
+    cout << "ENTER YOUR MOBILE NUMBER:-" << endl;
+    cin >> mob_no;
+    cout << "ENTER YOUR ID NUMBER:-" << endl;
+    cin >> addhar_no;
+    cout << "SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-" << endl;
+    cin >> pin_no;
 };
 
 void account::change_det()
@@ -46,112 +50,121 @@ void account::change_det()
     int choice;
     do
     {
-        std::cout<<"WHAT YOU WANT TO CHANGE:-"<<endl;
-        std::cout<<"01.NAME"<<endl;
-        std::cout<<"02.FATHER'S NAME"<<endl;
-        std::cout<<"03.MATHER'S NAME"<<endl;
-        std::cout<<"04.MOBILE NO."<<endl;
-        std::cout<<"05.ID NUMBER"<<endl;
-        std::cout<<"06.PIN NO"<<endl;
-        std::cout<<"ENTER YOUR CHOICE(1-6):-"<<endl;
-        std::cin>>choice;
+        cout<<"WHAT YOU WANT TO CHANGE:-"<<endl;
+        cout<<"01.NAME"<<endl;
+        cout<<"02.FATHER'S NAME"<<endl;
+        cout<<"03.MATHER'S NAME"<<endl;
+        cout<<"04.MOBILE NO."<<endl;
+        cout<<"05.ID NUMBER"<<endl;
+        cout<<"06.PIN NO"<<endl;
+        cout<<"ENTER YOUR CHOICE(1-6):-"<<endl;
+        cin>>choice;
 
         switch(choice){
             case 1:
-                std::cout<<"ENTER NAME:-"<<endl;
+                cout<<"ENTER NAME:-"<<endl;
                 gets(my_name);
                 break;
             case 2:
-                std::cout<<"ENTER FATHER'S NAME:-"<<endl;
+                cout<<"ENTER FATHER'S NAME:-"<<endl;
                 gets(father_n);
                 break;
             case 3:
-                std::cout<<"ENTER MOTHER'S NAME:-"<<endl;
+                cout<<"ENTER MOTHER'S NAME:-"<<endl;
                 gets(mother_n);
                 break;
             case 4:
-                std::cout<<"ENTER MOBILE NUMBER:-"<<endl;
-                std::cin>>mob_no;
+                cout<<"ENTER MOBILE NUMBER:-"<<endl;
+                cin>>mob_no;
                 break;
             case 5:
-                std::cout<<"ENTER ID NO.:-"<<endl;
-                std::cin>>id_no;
+                cout<<"ENTER ADDHAR NO.:-"<<endl;
+                cin>>addhar_no;
                 break;
             case 6:
-                std::cout<<"ENTER PIN NO:-"<<endl;
-                std::cin>>pin_no;
+                cout<<"ENTER PIN NO:-"<<endl;
+                cin>>pin_no;
                 break;
             default:
-                std::cout<<"WRONG CHOICE"<<endl;
+                cout<<"WRONG CHOICE"<<endl;
                 getch();
         }
     } while (choice>6);
 };
+void account::pay(int i)
+{   int choice;
+    do{
+        cout<<"WHICH BILL YOU WANT TO PAY:-"<<endl;
+        cout<<"01.ELECTRICITY"<<endl;
+        cout<<"02.WATER"<<endl;
+        cout<<"03.DTH"<<endl;
+        cout<<"04.PREPAID MOBILLE"<<endl;
+        cout<<"05.FASTAG"<<endl;
+        cout<<"06.MEACHANT PAYMENT"<<endl;
+        cout<<"07.BOOK TRAIN"<<endl;
+        cout<<"08.BOOK BUS"<<endl;
+
+        switch(choice)
+        { 
+            case 1:
+                customer[i].electricity_pay();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+                 
+        }
+
+    }while(choice>9);
+};
 
 int main()
-{
+{   
+    account customer[100];
+    int opening_no=0;
+    int current_no;
     int choice;
-
     do
     {
-        std::cout << "\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK" << endl;
-        std::cout << "MAIN MENU:-" << endl;
-        std::cout << "01.OPEN ACCOUNT" << endl;
-        std::cout << "02.DEPOSIT MONEY" << endl;
-        std::cout << "01.OPEN ACCOUNT" << endl;
-        std::cout << "02.CLOSE ACCOUNT" << endl;
-        std::cout << "03.CHANGE DETAILS" << endl;
-        std::cout << "04.APPLY FOR LOAN" << endl;
-        std::cout << "05.INVEST" << endl;
-        std::cout << "06.APPLY FOR INTERNET BANKING"<< endl;
-        std::cout << "07.SUSPEND INTERNET BANKING" << endl;
-        std::cout << "08.PAYMENT" << endl;
-        std::cout << "09.DONATION" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
-        std::cout << "" << endl;
+        cout << "\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK" << endl;
+        cout << "MAIN MENU:-" << endl;
+        cout << "01.NEW COUSTOMER" << endl;
+        cout << "02.LOGIN" << endl;
+        cout << "03.EXIT" << endl;
+       
 
-        std::cout << "ENTER YOUR CHOICE(1-9):-" << endl;
-        std::cin >> choice;
+        cout << "ENTER YOUR CHOICE(1-3):-" << endl;
+        cin >> choice;
         switch (choice)
         {
         case 1:
-
+            customer[opening_no++].get_det();
             break;
 
         case 2:
+          
             break;
+        
+        case 3: 
+            exit(0);
 
-        case 3:
-            break;
-
-        case 4:
-            break;
-
-        case 5:
-            break;
-
-        case 6:
-            break;
-
-        case 7:
-            break;
-
-        case 8:
-            break;
-
-        case 9:
-            break;
 
         default:
-            std::cout << "WRONG CHOICE" << endl;
+            cout << "WRONG CHOICE" << endl;
             getch();
         }
-    } while (choice >= 9);
+    } while (choice >2);
 
     return 0;
 }
