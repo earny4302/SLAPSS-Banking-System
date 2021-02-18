@@ -106,7 +106,7 @@ void account::pay(int i)
         switch(choice)
         { 
             case 1:
-                coustomer[i].electricity_pay();
+                customer[i].electricity_pay();
                 break;
             case 2:
                 break;
@@ -130,7 +130,7 @@ void account::pay(int i)
 
 int main()
 {   
-    account coustomer[100];
+    account customer[100];
     int opening_no=0;
     int current_no;
     int choice;
@@ -143,12 +143,12 @@ int main()
         cout << "03.EXIT" << endl;
        
 
-        cout << "ENTER YOUR CHOICE(1/2):-" << endl;
+        cout << "ENTER YOUR CHOICE(1-3):-" << endl;
         cin >> choice;
         switch (choice)
         {
         case 1:
-            coustomer[opening_no++].get_det();
+            customer[opening_no++].get_det();
             break;
 
         case 2:
