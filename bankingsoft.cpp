@@ -23,7 +23,7 @@ public:
     void deposit();
     void credit();
     void show_bal();
-    void pay(int);
+    void pay();
     void electricity_pay();
     void water_pay();
 };
@@ -90,7 +90,7 @@ void account::change_det()
         }
     } while (choice>6);
 };
-void account::pay(int i)
+void account::pay()
 {   int choice;
     do{
         cout<<"WHICH BILL YOU WANT TO PAY:-"<<endl;
@@ -106,7 +106,7 @@ void account::pay(int i)
         switch(choice)
         { 
             case 1:
-                customer[i].electricity_pay();
+                electricity_pay();
                 break;
             case 2:
                 break;
