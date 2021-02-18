@@ -16,6 +16,7 @@ public:
     int pin_no;
     char login_user[10];
     long long login_pass;
+    int pan_no;
     void intro();
     void get_det();
     void change_det();
