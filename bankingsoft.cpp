@@ -14,6 +14,7 @@ public:
     long mob_no;
     long id_no;
     int pin_no;
+    long long login_pass;
     void intro();
     void get_det();
     void change_det();
