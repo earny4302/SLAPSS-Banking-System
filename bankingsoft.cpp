@@ -23,7 +23,9 @@ public:
     void deposit();
     void credit();
     void show_bal();
-    void pay();
+    void pay(int);
+    void electricity_pay();
+    void water_pay();
 };
 
 void account::get_det()
@@ -88,7 +90,7 @@ void account::change_det()
         }
     } while (choice>6);
 };
-void pay()
+void account::pay(int i)
 {   int choice;
     do{
         cout<<"WHICH BILL YOU WANT TO PAY:-"<<endl;
@@ -104,6 +106,7 @@ void pay()
         switch(choice)
         { 
             case 1:
+                coustomer[i].electricity_pay();
                 break;
             case 2:
                 break;
@@ -128,7 +131,8 @@ void pay()
 int main()
 {   
     account coustomer[100];
-    int opening_no=1;
+    int opening_no=0;
+    int current_no;
     int choice;
     do
     {
