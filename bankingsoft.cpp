@@ -18,6 +18,17 @@ public:
     long long login_pass;
     int pin_no;
     long long acc_bal;
+    //variables regarding loans starts
+    //variables regarding home loan starts
+    char homeloan_newadd[200];
+    long homeloan_principal;
+    int homeloan_no;
+    long current_income;
+    float homeloan_interest;
+    int homeloan_time;
+    long homeloan_totalamount;
+    //variables regarding home loan ends 
+    //variables regaring LOANS ends
     
     //function prototype regarding BASICS starts from here
     void get_det();
@@ -41,7 +52,13 @@ public:
     //functions prototype regarding PAYMENTS end here
 
     //functions prototype regarding LOAN start from here
-
+    void loan_into();
+    void home_loan();
+    void vehicle_loan();
+    void gold_loan();
+    void edu_loan();
+    void emi_loan();
+    void agri_loan();
     //function prototype regarding LOAN ends here
 
     //functions prototype regarding INSURANCE starts from here
@@ -124,7 +141,7 @@ void account::pay()
         cout << "03.DTH" << endl;
         cout << "04.PREPAID MOBILLE" << endl;
         cout << "05.FASTAG" << endl;
-        cout << "06.MEACHANT PAYMENT" << endl;
+        cout << "06.MERCHANT PAYMENT" << endl;
         cout << "07.BOOK TRAIN" << endl;
         cout << "08.BOOK BUS" << endl;
 
@@ -175,6 +192,7 @@ void account::electricity_pay()
         {
             cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
             acc_bal = acc_bal - amount;
+            //add show balance
             getch();
         }
         if (acc_bal < amount)
@@ -349,7 +367,58 @@ void account::merchant_pay(){
 //functions definations regarding PAYMENTS ends here
 
     //functions defination regarding LOAN start from here
+void account::loan_into()
+{
+ int choice;
+    do
+    {
+        cout <<"FOLLOWING LOAN ARE AVAILABLE IN OUR BANK:-" << endl;
+        cout << "01.HOME LOAN" << endl;
+        cout << "02.VEHICLE LOAN" << endl;
+        cout << "03.GOLD LOAN" << endl;
+        cout << "04.EDUCATION LOAN" << endl;
+        cout << "05.EMI" << endl;
+        cout << "06.AGRICULTURE LOAN" << endl;
+        cout << "07.YOUR CURRENT LOAN"<<endl;
+    
 
+        switch (choice)
+        {
+        case 1:
+            home_loan();
+            break;
+        case 2:
+            vehicle_loan();
+            break;
+        case 3:
+            gold_loan();
+            break;
+        case 4:
+            edu_loan();
+            break;
+        case 5:
+            emi_loan();
+            break;
+        case 6:
+            agri_loan();
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";            
+            getch();
+        }
+
+    } while (choice > 9);   
+}
+void account::home_loan()
+{  
+    cout<<"\n HOME LOAN";
+    cout<<"\n ENTER ";
+    gets(homeloan_newadd);
+    cout<<"\n ENTER YOUR CURRENT INCOME:- \t";
+    cin>>current_income;
+    cout<<"\n ENTER THE AMOUNT YOU NEED:-\t";
+    cin>>;
+}
     //functions defination regarding LOAN ends here
 
     //functions defination regarding INSURANCE starts from here
