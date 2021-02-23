@@ -18,12 +18,16 @@ public:
     long long login_pass;
     int pin_no;
     long long acc_bal;
-
+    
+    //function prototype regarding BASICS starts from here
     void get_det();
     void change_det();
     void deposit();
     void credit();
     void show_bal();
+    //function prototype regarding BASICS ends here
+
+    //functions prototype regarding PAYMENTS starts from here
     void pay();
     void electricity_pay();
     void water_pay();
@@ -33,6 +37,16 @@ public:
     void merchant_pay();
     void book_train();
     void book_bus();
+    void transfer_fund();
+    //functions prototype regarding PAYMENTS end here
+
+    //functions prototype regarding LOAN start from here
+
+    //function prototype regarding LOAN ends here
+
+    //functions prototype regarding INSURANCE starts from here
+
+    // functions prototype regarding INSURANCE end here
 };
 
 void account::get_det()
@@ -50,7 +64,6 @@ void account::get_det()
     cout << "SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-" << endl;
     cin >> pin_no;
 };
-
 void account::change_det()
 {
     int choice;
@@ -98,6 +111,8 @@ void account::change_det()
         }
     } while (choice > 6);
 };
+
+//functioms definations regarding PAYMENTS starts from here
 void account::pay()
 {
     int choice;
@@ -331,6 +346,15 @@ void account::merchant_pay(){
         getch();
     }
 }
+//functions definations regarding PAYMENTS ends here
+
+    //functions defination regarding LOAN start from here
+
+    //functions defination regarding LOAN ends here
+
+    //functions defination regarding INSURANCE starts from here
+
+    //functions defination regarding INSURANCE end here
 
 int main()
 {
