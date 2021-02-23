@@ -1,2 +1,2 @@
 # SLAPSS-Banking-System
-Banking System without Database for College Project
+Banking System without Database for College Project(1st sem ) in C++
