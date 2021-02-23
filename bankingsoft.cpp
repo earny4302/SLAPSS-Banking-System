@@ -68,17 +68,17 @@ public:
 
 void account::get_det()
 {
-    cout << "ENTER YOUR NAME:-" << endl;
+    cout << "\n ENTER YOUR NAME:-";
     gets(my_name);
-    cout << "ENTER YOUR FATHER'S NAME:-" << endl;
+    cout << "\n ENTER YOUR FATHER'S NAME:-";
     gets(father_n);
-    cout << "ENTER YOUR MOTHER'S NAME:-" << endl;
+    cout << "\n ENTER YOUR MOTHER'S NAME:-";
     gets(mother_n);
-    cout << "ENTER YOUR MOBILE NUMBER:-" << endl;
+    cout << "\n ENTER YOUR MOBILE NUMBER:-";
     cin >> mob_no;
-    cout << "ENTER YOUR ID NUMBER:-" << endl;
+    cout << "\n ENTER YOUR ID NUMBER:-";
     cin >> addhar_no;
-    cout << "SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-" << endl;
+    cout << "\n SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-";
     cin >> pin_no;
 };
 void account::change_det()
@@ -86,8 +86,8 @@ void account::change_det()
     int choice;
     do
     {
-        cout << "WHAT YOU WANT TO CHANGE:-" << endl;
-        cout << "01.NAME" << endl;
+        cout << "\n WHAT YOU WANT TO CHANGE:-";
+        cout << "\n 01.NAME";
         cout << "02.FATHER'S NAME" << endl;
         cout << "03.MATHER'S NAME" << endl;
         cout << "04.MOBILE NO." << endl;
