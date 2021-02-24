@@ -62,6 +62,9 @@ public:
     //function prototype regarding LOAN ends here
 
     //functions prototype regarding INSURANCE starts from here
+    void life_insurance();
+    void car_insurance();
+    void health_insurance();
 
     // functions prototype regarding INSURANCE end here
 };
@@ -450,7 +453,7 @@ int main()
             break;
 
         case 2:
-
+                
             break;
 
         case 3:
