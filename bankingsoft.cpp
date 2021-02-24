@@ -88,12 +88,12 @@ void account::change_det()
     {
         cout << "\n WHAT YOU WANT TO CHANGE:-";
         cout << "\n 01.NAME";
-        cout << "02.FATHER'S NAME" << endl;
-        cout << "03.MATHER'S NAME" << endl;
-        cout << "04.MOBILE NO." << endl;
-        cout << "05.ID NUMBER" << endl;
-        cout << "06.PIN NO" << endl;
-        cout << "ENTER YOUR CHOICE(1-6):-" << endl;
+        cout << "\n 02.FATHER'S NAME";
+        cout << "\n 03.MATHER'S NAME";
+        cout << "\n 04.MOBILE NO.";
+        cout << "\n 05.ID NUMBER";
+        cout << "\n 06.PIN NO";
+        cout << "\n ENTER YOUR CHOICE(1-6):-";
         cin >> choice;
 
         switch (choice)
@@ -412,12 +412,14 @@ void account::loan_into()
 void account::home_loan()
 {  
     cout<<"\n HOME LOAN";
-    cout<<"\n ENTER ";
+    cout<<"\n ENTER LOCATION OF HOME FOR WHICH YOU NEED LOAN:-";
     gets(homeloan_newadd);
     cout<<"\n ENTER YOUR CURRENT INCOME:- \t";
     cin>>current_income;
     cout<<"\n ENTER THE AMOUNT YOU NEED:-\t";
-    cin>>;
+    cin>>homeloan_principal;
+    cout<<"\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+    cin>>homeloan_time;
 }
     //functions defination regarding LOAN ends here
 
@@ -433,13 +435,13 @@ int main()
     int choice;
     do
     {
-        cout << "\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK" << endl;
-        cout << "MAIN MENU:-" << endl;
-        cout << "01.NEW COUSTOMER" << endl;
-        cout << "02.LOGIN" << endl;
-        cout << "03.EXIT" << endl;
+        cout << "\n\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK";
+        cout << "\n MAIN MENU:-";
+        cout << "\n 01.NEW COUSTOMER";
+        cout << "\n 02.LOGIN";
+        cout << "\n 03.EXIT";
 
-        cout << "ENTER YOUR CHOICE(1-3):-" << endl;
+        cout << "\n ENTER YOUR CHOICE(1-3):-";
         cin >> choice;
         switch (choice)
         {
@@ -455,7 +457,7 @@ int main()
             break;
 
         default:
-            cout << "WRONG CHOICE" << endl;
+            cout <<"\n WRONG CHOICE";
             getch();
         }
     } while (choice > 2);
