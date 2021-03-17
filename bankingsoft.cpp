@@ -4,7 +4,6 @@
 #include <string>
 #include <stdlib.h>
 using namespace std;
-
 class account
 {
 public:
@@ -57,12 +56,22 @@ public:
     //variables regaring LOANS ends
 
     //function prototype regarding BASICS starts from here
+    int login_check(char arr1[50],char arr2[50],int i){
+        if(strcmp(arr[50],login_user)==1){
+            if(strcmp(arr2[50],login_pass)==1){
+                return int i;
+            }
+        }
+        else 
+            return -1;
+    }
     void first_window();
     void get_det();
     void change_det();
     void deposit();
-    void credit();
     void show_bal();
+    int check_pin();
+    void 
     //function prototype regarding BASICS ends here
 
     //functions prototype regarding PAYMENTS starts from here
@@ -103,11 +112,85 @@ public:
     void donate_intro();
     //function prototype regarding DONATION ends here 
 };
+
+// functions defination regarding BASICS starts here
 void account::first_window()
 {
+    system("CLS");
+    
+    int choice;
+    do
+    {
+        cout << "\n HOW CAN WE HELP YOU:-";
+        cout << "\n 01.CHANGE DETAILS";
+        cout << "\n 02.DEPOSIT MONEY";
+        cout << "\n 03.CHECK BALANCE";
+        cout << "\n 04.APPLY FOR LOAN";
+        cout << "\n 05.PAY TO MERCHANT";
+        cout << "\n 06.TRANSFER FUNDS";
+        cout << "\n 07.INSURANCE";
+        cout << "\n 08.DONATION";
+        cout << "\n 09.INVEST";
+        cout << "\n 10.PAY TAXES";
+        cout << "\n 11.TALK TO CUSTOMER CARE";
+        cout << "\n 12.BACK TO MAIN MENU";
+        cout << "\n 13.EXIT PROGRAM"
+        cout << "\n ENTER YOUR CHOICE(1-6):-";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            change_det();
+            break;
+        case 2:
+            deposit();
+            break;
+        case 3:
+            show_bal();
+            break;
+        case 4:
+            loan_into();
+            break;
+        case 5:
+            pay();
+            break;
+        case 6:
+            transfer_fund();
+            break;
+        case 7:
+            insurance_intro();
+            break;
+        case 8:
+            donate_intro();
+            break;
+        case 9:
+            cout << "ENTER PIN NO:-\t";
+            cin >> pin_no;
+            break;
+        case 10:
+            cout << "ENTER PIN NO:-\t";
+            cin >> pin_no;
+            break;
+        case 11:
+            cout<<"\n WE ARE HERE FOR YOU 24*7";
+            cout<<"\n CONTACT US ON 7999538548";
+            getch();
+            break;
+         case 12:
+            break;
+         case 13:
+            exit(0);
+            break;
+
+        default:
+            cout << "\n WRONG CHOICE";
+            getch();
+        }
+    } while (choice > 13);
+
 
 }
-
 void account::get_det()
 {
     cout << "\n ENTER YOUR NAME:-\t";
@@ -150,35 +233,63 @@ void account::change_det()
         switch (choice)
         {
         case 1:
-            cout << "\nENTER NAME:-\t";
+            cout << "\n ENTER NAME:-\t";
             gets(my_name);
             break;
         case 2:
-            cout << "\nENTER FATHER'S NAME:-\t";
+            cout << "\n ENTER FATHER'S NAME:-\t";
             gets(father_n);
             break;
         case 3:
-            cout << "\nENTER MOTHER'S NAME:-\t";
+            cout << "\n ENTER MOTHER'S NAME:-\t";
             gets(mother_n);
             break;
         case 4:
-            cout << "\nENTER MOBILE NUMBER:-\t";
+            cout << "\n ENTER MOBILE NUMBER:-\t";
             cin >> mob_no;
             break;
         case 5:
-            cout << "\nENTER ADDHAR NO.:-\t";
+            cout << "\n ENTER ADDHAR NO.:-\t";
             cin >> addhar_no;
             break;
         case 6:
-            cout << "ENTER PIN NO:-\t";
+            cout << "\n ENTER PIN NO:-\t";
             cin >> pin_no;
             break;
         default:
-            cout << "\nWRONG CHOICE";
+            cout << "\n WRONG CHOICE";
             getch();
         }
     } while (choice > 6);
 };
+void account::show_bal()
+{
+    system("CLS");
+    cout << "\n YOUR CURRENT BALANCE IS:- "<<acc_bal; 
+    getch();   
+}
+int account::check_pin(int check_p)
+{    
+    if(check_p==pin_no)
+    {
+        return 1;
+    }
+    if(check_p!=pin_no)
+    {
+        return 0;
+    }
+}
+void account::deposit()
+{
+    system("CLS");
+    int amount;
+    cout << "\n ENTER THE AMOUNT TO BE DEPOSITED:- \t";
+    cin>>amount;
+
+
+
+}
+//functions defination regarding BASICS ends here
 
 //functioms definations regarding PAYMENTS starts from here
 void account::pay()
@@ -186,15 +297,15 @@ void account::pay()
     int choice;
     do
     {
-        cout << "\nWHICH BILL YOU WANT TO PAY:-" ;
-        cout << "01.ELECTRICITY";
-        cout << "02.WATER";
-        cout << "03.DTH";
-        cout << "04.PREPAID MOBILLE";
-        cout << "05.FASTAG";
-        cout << "06.MERCHANT PAYMENT";
-        cout << "07.BOOK TRAIN";
-        cout << "08.BOOK BUS";
+        cout << "\n WHICH BILL YOU WANT TO PAY:-" ;
+        cout << "\n 01.ELECTRICITY";
+        cout << "\n 02.WATER";
+        cout << "\n 03.DTH";
+        cout << "\n 04.PREPAID MOBILLE";
+        cout << "\n 05.FASTAG";
+        cout << "\n 06.MERCHANT PAYMENT";
+        cout << "\n 07.BOOK TRAIN";
+        cout << "\n 08.BOOK BUS";
 
         switch (choice)
         {
@@ -243,7 +354,7 @@ void account::electricity_pay()
         {
             cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
             acc_bal = acc_bal - amount;
-            //add show balance
+            show_bal();
             getch();
         }
         if (acc_bal < amount)
@@ -450,7 +561,7 @@ void account::loan_intro()
             agri_loan();
             break;
         default:
-            cout << "\nWRONG CHOICE";
+            cout << "\n WRONG CHOICE";
             getch();
         }
 
@@ -534,11 +645,11 @@ void donate_pay()
 {
     int amount, total; // total is the fund collected till date
     long acc_bal = 10000;
-    cout << "Enter the amount :";
+    cout << "\n Enter the amount :";
     cin >> amount;
     if (acc_bal >= amount)
     {
-        cout << "YOUR TRANSACTION IS SUCCESSFUL \n";
+        cout << "\n YOUR TRANSACTION IS SUCCESSFUL";
         acc_bal = acc_bal - amount;
         total = total + amount;
         //add show balance
@@ -546,7 +657,7 @@ void donate_pay()
     }
     if (acc_bal < amount)
     {
-        cout << "INSUFFIECIENT BALANCE \n";
+        cout << "\n INSUFFIECIENT BALANCE";
         getch();
     }
 }
@@ -714,7 +825,9 @@ int main()
 {
     account customer[100];
     int opening_no = 0;
-    int current_no;
+    int current_no=-50;
+    char check_user[50];
+    char check_pass[50];
     int choice;
     do
     {
@@ -734,8 +847,28 @@ int main()
             break;
 
         case 2:
-        
-            break;
+            system("CLS");
+            cout << "\n ENTER YOUR USER NAME:-\t";
+            gets(check_user);
+            cout << "\n ENTER YOUR PASSWORD:-\t";
+            gets(check_pass);
+            for(int i=0;i<opening_no;i++)
+            {
+                int x=customer[i].login_check(check_user[50],check_pass[50],i)
+                if(x!=-1){
+                    current_no=i;
+                    break;
+                }
+            }
+            if(current_no!=-50){
+                customer[current_no].first_window();
+            }
+            if(current_no==-50){
+                system("CLS");
+                cout << "\n WRONG USERNAME OR PASSWORD";    
+                getch();            
+            }
+             break;
 
         case 3:
             break;
