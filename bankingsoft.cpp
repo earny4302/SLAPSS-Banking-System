@@ -46,6 +46,7 @@ public:
     void deposit();
     void show_bal();
     int check_pin();
+    void 
     //function prototype regarding BASICS ends here
 
     //functions prototype regarding PAYMENTS starts from here
@@ -242,14 +243,25 @@ void account::show_bal()
     cout << "\n YOUR CURRENT BALANCE IS:- "<<acc_bal; 
     getch();   
 }
-int account::check_pin()
-{
-
+int account::check_pin(int check_p)
+{    
+    if(check_p==pin_no)
+    {
+        return 1;
+    }
+    if(check_p!=pin_no)
+    {
+        return 0;
+    }
 }
 void account::deposit()
 {
     system("CLS");
-    cout << "\n ENTER THE AMOUNT TO BE DEPOSITED";
+    int amount;
+    cout << "\n ENTER THE AMOUNT TO BE DEPOSITED:- \t";
+    cin>>amount;
+
+
 
 }
 //functions defination regarding BASICS ends here
