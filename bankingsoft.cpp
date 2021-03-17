@@ -4,7 +4,6 @@
 #include <string>
 #include <stdlib.h>
 using namespace std;
-
 class account
 {
 public:
@@ -32,11 +31,19 @@ public:
     //variables regaring LOANS ends
 
     //function prototype regarding BASICS starts from here
+    int login_check(char arr1[50],char arr2[50],int i){
+        if(strcmp(arr[50],login_user)==1){
+            if(strcmp(arr2[50],login_pass)==1){
+                return int i;
+            }
+        }
+        else 
+            return -1;
+    }
     void first_window();
     void get_det();
     void change_det();
     void deposit();
-    void credit();
     void show_bal();
     //function prototype regarding BASICS ends here
 
@@ -80,6 +87,79 @@ public:
 };
 void account::first_window()
 {
+    system("CLS");
+    
+    int choice;
+    do
+    {
+        cout << "\n HOW CAN WE HELP YOU:-";
+        cout << "\n 01.CHANGE DETAILS";
+        cout << "\n 02.DEPOSIT MONEY";
+        cout << "\n 03.CHECK BALANCE";
+        cout << "\n 04.APPLY FOR LOAN";
+        cout << "\n 05.PAY TO MERCHANT";
+        cout << "\n 06.TRANSFER FUNDS";
+        cout << "\n 07.INSURANCE";
+        cout << "\n 08.DONATION";
+        cout << "\n 09.INVEST";
+        cout << "\n 10.PAY TAXES";
+        cout << "\n 11.TALK TO CUSTOMER CARE";
+        cout << "\n 12.BACK TO MAIN MENU";
+        cout << "\n 13.EXIT PROGRAM"
+        cout << "\n ENTER YOUR CHOICE(1-6):-";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            change_det();
+            break;
+        case 2:
+            deposit();
+            break;
+        case 3:
+            show_bal();
+            break;
+        case 4:
+            loan_into();
+            break;
+        case 5:
+            pay();
+            break;
+        case 6:
+            transfer_fund();
+            break;
+        case 7:
+            insurance_intro();
+            break;
+        case 8:
+            donate_intro();
+            break;
+        case 9:
+            cout << "ENTER PIN NO:-\t";
+            cin >> pin_no;
+            break;
+        case 10:
+            cout << "ENTER PIN NO:-\t";
+            cin >> pin_no;
+            break;
+        case 11:
+            cout<<"\n WE ARE HERE FOR YOU 24*7";
+            cout<<"\n CONTACT US ON 7999538548";
+            getch();
+            break;
+         case 12:
+            break;
+         case 13:
+            exit(0);
+            break;
+
+        default:
+            cout << "\n WRONG CHOICE";
+            getch();
+        }
+    } while (choice > 13);
+
 
 }
 
@@ -125,31 +205,31 @@ void account::change_det()
         switch (choice)
         {
         case 1:
-            cout << "\nENTER NAME:-\t";
+            cout << "\n ENTER NAME:-\t";
             gets(my_name);
             break;
         case 2:
-            cout << "\nENTER FATHER'S NAME:-\t";
+            cout << "\n ENTER FATHER'S NAME:-\t";
             gets(father_n);
             break;
         case 3:
-            cout << "\nENTER MOTHER'S NAME:-\t";
+            cout << "\n ENTER MOTHER'S NAME:-\t";
             gets(mother_n);
             break;
         case 4:
-            cout << "\nENTER MOBILE NUMBER:-\t";
+            cout << "\n ENTER MOBILE NUMBER:-\t";
             cin >> mob_no;
             break;
         case 5:
-            cout << "\nENTER ADDHAR NO.:-\t";
+            cout << "\n ENTER ADDHAR NO.:-\t";
             cin >> addhar_no;
             break;
         case 6:
-            cout << "ENTER PIN NO:-\t";
+            cout << "\n ENTER PIN NO:-\t";
             cin >> pin_no;
             break;
         default:
-            cout << "\nWRONG CHOICE";
+            cout << "\n WRONG CHOICE";
             getch();
         }
     } while (choice > 6);
@@ -637,7 +717,9 @@ int main()
 {
     account customer[100];
     int opening_no = 0;
-    int current_no;
+    int current_no=-50;
+    char check_user[50];
+    char check_pass[50];
     int choice;
     do
     {
@@ -657,8 +739,28 @@ int main()
             break;
 
         case 2:
-        
-            break;
+            system("CLS");
+            cout<<"\n ENTER YOUR USER NAME:-\t";
+            gets(check_user);
+            cout<<"\n ENTER YOUR PASSWORD:-\t";
+            gets(check_pass);
+            for(int i=0;i<opening_no;i++)
+            {
+                int x=customer[i].login_check(check_user[50],check_pass[50],i)
+                if(x!=-1){
+                    current_no=i;
+                    break;
+                }
+            }
+            if(current_no!=-50){
+                customer[current_no].first_window();
+            }
+            if(current_no==-50){
+                system("CLS");
+                cout<<"\n WRONG USERNAME OR PASSWORD";    
+                getch();            
+            }
+             break;
 
         case 3:
             break;
