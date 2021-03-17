@@ -29,6 +29,31 @@ public:
     int homeloan_time;
     long homeloan_totalamount;
     //variables regarding home loan ends
+    //variables regarding vehicle loan starts
+    char vehicle_model[100];
+    char vehicle_info[500];
+    int vehicleloan_time;
+    long vehicleloan_principal;
+    //variables regarding vehicle loan ends
+    //variables regarding gold loan starts
+    float gold_amount;
+    float goldloan_value;
+    int goldloan_time;
+    //variables regarding gold loan ends
+    //variables regarding education loan starts
+    char edu_field[100];
+    char edu_info[500];
+    int edu_duration;
+    long edu_fee;
+    int edu_time;
+    //variables regarding education loan ends
+    //varialbes regarding agricultural loan starts
+    char agri_crop[200];
+    char agri_info[800];
+    float agri_area;
+    long agri_amount;
+    int agri_time;
+    //varialbes regarding agricultural loan ends
     //variables regaring LOANS ends
 
     //function prototype regarding BASICS starts from here
@@ -394,7 +419,7 @@ void account::merchant_pay()
 //functions definations regarding PAYMENTS ends here
 
 //functions defination regarding LOAN start from here
-void account::loan_into()
+void account::loan_intro()
 {
     int choice;
     do
@@ -404,9 +429,8 @@ void account::loan_into()
         cout << "02.VEHICLE LOAN";
         cout << "03.GOLD LOAN";
         cout << "04.EDUCATION LOAN";
-        cout << "05.EMI";
-        cout << "06.AGRICULTURE LOAN";
-        cout << "07.YOUR CURRENT LOAN" ;
+        cout << "05.AGRICULTURE LOAN";
+        cout << "06.YOUR CURRENT LOAN" ;
 
         switch (choice)
         {
@@ -423,9 +447,6 @@ void account::loan_into()
             edu_loan();
             break;
         case 5:
-            emi_loan();
-            break;
-        case 6:
             agri_loan();
             break;
         default:
@@ -446,6 +467,62 @@ void account::home_loan()
     cin >> homeloan_principal;
     cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
     cin >> homeloan_time;
+}
+void account::vehicle_loan()
+{
+    cout << "\n VEHICLE LOAN";
+    cout << "\n ENTER THE MODEL OF THE VEHICLE";
+    gets(vehicle_model);
+    cout << "\n ENTER THE VEHICLE INFORMATION";
+    gets(vehicle_info);
+    cout << "\n ENTER YOUR CURRENT INCOME:- \t";
+    cin >> current_income;
+    cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
+    cin >> vehicleloan_principal;
+    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+    cin >> vehicleloan_time;
+    //cout << "\n DO YOU WANT VEHICLE INSURANCE";
+}
+void account::gold_loan()
+{
+    cout << "\n GOLD LOAN";
+    cout << "\n CURRENT PRICE OF GOLD :-";
+    cout << "\n Rs.46,000 per 10gram";
+    cout << "\n ENTER THE AMOUNT OF GOLD YOU ARE LENDING(IN GRAM)";
+    cin >> gold_amount;
+    cout << "\n THE RATE OF INTEREST IS 5%"
+    goldloan_value = gold_amount*4370
+    cout << "\n THE AMOUNT YOU GET FROM LENDING THE GOLD:- \t" << goldloan_value ;
+    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO REPAY THE AMOUNT:-";
+    cin >> goldloan_time;
+}
+void account::edu_loan()
+{
+    cout << "\n EDUCATION LOAN";
+    cout << "\n ENTER YOUR FIELD OF EDUCATION";
+    gets(edu_field);
+    cout << "\n ENTER YOUR EDUCTION COURSE INFORMATION";
+    gets(edu_info);
+    cout << "\n ENTER COURSE DURATION(IN MONTHS)";
+    cin >> edu_duration;
+    cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
+    cin >> edu_fee;
+    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+    cin >> edu_time;
+}
+void account::agri_loan()
+{
+    cout << "\n AGRICULTURE LOAN";
+    cout << "\n ENTER THE CORPS GROWN IN THE FIELD";
+    gets(agri_crop);
+    cout << "\n ENTER THE INFO OF CROPS AND FIELD";
+    gets(agri_info);
+    cout << "\n ENTER YOUR AREA OF THE FIELD";
+    cin >> agri_area;
+    cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
+    cin >> agri_amount;
+    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+    cin >> agri_time;
 }
 //functions defination regarding LOAN ends here
 
