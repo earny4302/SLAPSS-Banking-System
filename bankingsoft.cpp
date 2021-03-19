@@ -57,9 +57,9 @@ public:
 
     //function prototype regarding BASICS starts from here
     int login_check(char arr1[50],char arr2[50],int i){
-        if(strcmp(arr[50],login_user)==1){
+        if(strcmp(arr1[50],login_user)==1){
             if(strcmp(arr2[50],login_pass)==1){
-                return int i;
+                return i;
             }
         }
         else 
@@ -71,7 +71,7 @@ public:
     void deposit();
     void show_bal();
     int check_pin();
-    void 
+
     //function prototype regarding BASICS ends here
 
     //functions prototype regarding PAYMENTS starts from here
@@ -134,7 +134,7 @@ void account::first_window()
         cout << "\n 10.PAY TAXES";
         cout << "\n 11.TALK TO CUSTOMER CARE";
         cout << "\n 12.BACK TO MAIN MENU";
-        cout << "\n 13.EXIT PROGRAM"
+        cout << "\n 13.EXIT PROGRAM";
         cout << "\n ENTER YOUR CHOICE(1-6):-";
         cin >> choice;
 
