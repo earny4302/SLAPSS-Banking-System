@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <conio.h>
-#include <string>
+#include <string.h>
 #include <stdlib.h>
 using namespace std;
 class account
@@ -57,8 +57,8 @@ public:
 
     //function prototype regarding BASICS starts from here
     int login_check(char arr1[50],char arr2[50],int i){
-        if(strcmp(arr1[50],login_user)==1){
-            if(strcmp(arr2[50],login_pass)==1){
+        if(strcmp(arr1,login_user)==1){
+            if(strcmp(arr2,login_pass)==1){
                 return i;
             }
         }
@@ -601,8 +601,8 @@ void account::gold_loan()
     cout << "\n Rs.46,000 per 10gram";
     cout << "\n ENTER THE AMOUNT OF GOLD YOU ARE LENDING(IN GRAM)";
     cin >> gold_amount;
-    cout << "\n THE RATE OF INTEREST IS 5%"
-    goldloan_value = gold_amount*4370
+    cout << "\n THE RATE OF INTEREST IS 5%";
+    goldloan_value = gold_amount*4370;
     cout << "\n THE AMOUNT YOU GET FROM LENDING THE GOLD:- \t" << goldloan_value ;
     cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO REPAY THE AMOUNT:-";
     cin >> goldloan_time;
@@ -854,7 +854,7 @@ int main()
             gets(check_pass);
             for(int i=0;i<opening_no;i++)
             {
-                int x=customer[i].login_check(check_user[50],check_pass[50],i)
+                int x=customer[i].login_check(check_user,check_pass,i);
                 if(x!=-1){
                     current_no=i;
                     break;
