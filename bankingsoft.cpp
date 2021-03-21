@@ -98,6 +98,7 @@ public:
     //function prototype regarding LOAN ends here
 
     //functions prototype regarding INSURANCE starts from here
+    void insurance_intro();
     void life_insurance();
     void car_insurance();
     void health_insurance();
@@ -225,7 +226,10 @@ void account::change_det()
         cout << "\n 02.FATHER'S NAME";
         cout << "\n 03.MATHER'S NAME";
         cout << "\n 04.MOBILE NO.";
-        cout << "\n 05.ID NUMBER";
+        cout << "\n 05.ADDHAR NUMBER";
+        cout << "\n 06.PERMANENT ADDRESS";
+        cout << "\n 07.PIN NO";
+        cout << "\n 06.PIN NO";
         cout << "\n 06.PIN NO";
         cout << "\n ENTER YOUR CHOICE(1-6):-";
         cin >> choice;
@@ -252,7 +256,12 @@ void account::change_det()
             cout << "\n ENTER ADDHAR NO.:-\t";
             cin >> addhar_no;
             break;
+       
         case 6:
+            cout << "\n ENTER PERMANENT ADDRESS:-\t";
+            gets(address);
+            break;
+         case 7:
             cout << "\n ENTER PIN NO:-\t";
             cin >> pin_no;
             break;
@@ -260,7 +269,7 @@ void account::change_det()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice > 6);
+    } while (choice > 7);
 };
 void account::show_bal()
 {
@@ -877,7 +886,7 @@ int main()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice > 2);
+    } while (choice > 3);
 
     return 0;
 }
