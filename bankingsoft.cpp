@@ -112,6 +112,16 @@ public:
     void donatef4();
     void donate_intro();
     //function prototype regarding DONATION ends here 
+    //functions prototype regarding INVEST starts from here
+    void demat_services();
+    void saving_funds();
+    void pension_funds();
+    void gold_funds();
+    // functions prototype regarding INVEST end here
+    //variables regarding PAY_TAXES starts
+    long long salary;
+    char pan_number[10];
+    //variables regarding PAY_TAXES ends
 };
 
 // functions defination regarding BASICS starts here
@@ -289,12 +299,22 @@ int account::check_pin(int check_p)
 void account::deposit()
 {
     system("CLS");
+    int x;
+    int temp_pin;
     int amount;
     cout << "\n ENTER THE AMOUNT TO BE DEPOSITED:- \t";
     cin>>amount;
-
-
-
+    cout<<"\nENTER YOUR PIN";
+    cin>>temp_pin;
+    x=check_pin(temp_pin);
+    if(x==1){
+        acc_bal=acc_bal+amount;
+    }
+    if(x!=1){
+        system("cls");
+        cout<<"\nWRONG PIN";
+        getch();
+    }
 }
 //functions defination regarding BASICS ends here
 
@@ -537,7 +557,7 @@ void account::merchant_pay()
 //functions definations regarding PAYMENTS ends here
 
 //functions defination regarding LOAN start from here
-void account::loan_intro()
+void account::loan_into()
 {
     int choice;
     do
@@ -648,7 +668,7 @@ void account::agri_loan()
 
 //functions defination regarding INSURANCE end here
 //function defination regarding DONATION starts here
-void donate_pay()
+void account::donate_pay()
 {
     int amount, total; // total is the fund collected till date
     long acc_bal = 10000;
@@ -669,7 +689,7 @@ void donate_pay()
     }
 }
 
-void donatef1() // function for donatiion in cm fund
+void account::donatef1() // function for donatiion in cm fund
 {
     int df1;
     int total = 505000;
@@ -698,7 +718,7 @@ void donatef1() // function for donatiion in cm fund
     }
 }
 
-void donatef2() // donation in pm fund
+void account::donatef2() // donation in pm fund
 {
     int df2, total = 1070000;
     cout << "   PM Relief Fund \n";
@@ -725,7 +745,7 @@ void donatef2() // donation in pm fund
         cout << "Invalid input \n";
     }
 }
-void donatef3() //function for donation in army charity fund
+void account::donatef3() //function for donation in army charity fund
 {
     int df3, total = 2505000;
     cout << "   Army Charity Fund \n";
@@ -827,6 +847,73 @@ void account::donate_intro()
     while (choose == 1);
 }
 //function defination regarding DONATION ends here
+// functions defination regarding INVEST starts here
+void account::demat_services()
+{
+
+}
+void account::saving_funds()
+{
+    long long sav_funds;
+
+    cout<<"ENTER THE PIN NUMBER:-"<<endl;
+    gets(pin_no)
+    sav_funds=acc_bal+(acc_bal*7*1/100);
+    cout<<"YOUR TOTAL SAVINGS FUNDS ARE: "<<sav_funds;
+    getch();
+}
+void account::pension_funds()
+{
+    long long pen_funds;
+
+    cout<<"ENTER THE PIN NUMBER:-"<<endl;
+    gets(pin_no)
+    pen_funds=acc_bal+(acc_bal*5*1/100);
+    cout<<"YOUR TOTAL PENSION FUNDS ARE: "<<pen_funds;
+    getch();
+}
+void account::gold_funds()
+{
+    long long gold_fund;
+
+    cout<<"ENTER THE PIN NUMBER:-"<<endl;
+    gets(pin_no)
+    gold_fund=acc_bal+(acc_bal*20*1/100);
+    cout<<"YOUR TOTAL GOLD FUNDS ARE: "<<gold_fund;
+    getch();
+}
+// functions defination regarding PAY TAX start here
+
+void account::pay_taxes()
+{
+    int tax;
+    cout<<"ENTER YOUR SALARY:-"<<endl;
+    gets(salary)
+    cout<<"ENTER YOUR PAN NUMBER:-"<<endl;
+    gets(pan_number);
+    if(salary>0 && salary<=250000)
+        tax=0;
+    else if(salary>250000 && salary<=500000)
+        tax=5;
+    else if(salary>500000 && salary<=1000000)
+        tax=20;
+    else if(salary>1000000)
+        tax=30;
+    cout<<"TOTAL TAX PERCENTAGE: "<<tax<<endl;
+    total_tax=salary*tax/100;
+    if(acc_bal>=total_tax){
+        acc_bal-=total_tax;
+        cout<<"TAX PAID SUCCESSFULLY"<<endl;
+    }
+    else{
+        cout<<"YOU DON'T HAVE ENOUGH BALANCE TO PAY TAX"<<endl;
+    }
+    getch();
+}
+
+
+    // functions defination regarding PAY TAX end here
+    // functions defination regarding INVEST end here
 
 int main()
 {
