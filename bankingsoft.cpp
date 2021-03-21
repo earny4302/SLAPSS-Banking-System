@@ -122,6 +122,7 @@ public:
     long long salary;
     char pan_number[10];
     //variables regarding PAY_TAXES ends
+    void pay_taxes();
 };
 
 // functions defination regarding BASICS starts here
@@ -857,7 +858,7 @@ void account::saving_funds()
     long long sav_funds;
 
     cout<<"ENTER THE PIN NUMBER:-"<<endl;
-    gets(pin_no)
+    cin>>(pin_no);
     sav_funds=acc_bal+(acc_bal*7*1/100);
     cout<<"YOUR TOTAL SAVINGS FUNDS ARE: "<<sav_funds;
     getch();
@@ -900,7 +901,7 @@ void account::pay_taxes()
     else if(salary>1000000)
         tax=30;
     cout<<"TOTAL TAX PERCENTAGE: "<<tax<<endl;
-    total_tax=salary*tax/100;
+    int total_tax=salary*tax/100;
     if(acc_bal>=total_tax){
         acc_bal-=total_tax;
         cout<<"TAX PAID SUCCESSFULLY"<<endl;
