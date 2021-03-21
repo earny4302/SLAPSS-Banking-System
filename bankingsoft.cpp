@@ -928,7 +928,7 @@ int main()
     {
         cout << "\n\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK";
         cout << "\n MAIN MENU:-";
-        cout << "\n 01.NEW COUSTOMER";
+        cout << "\n 01.NEW CUSTOMER";
         cout << "\n 02.LOGIN";
         cout << "\n 03.EXIT";
 
