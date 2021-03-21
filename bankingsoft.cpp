@@ -168,10 +168,10 @@ void account::first_window()
             pay();
             break;
         case 6:
-            transfer_fund();
+           // transfer_fund();
             break;
         case 7:
-            insurance_intro();
+            //insurance_intro();
             break;
         case 8:
             donate_intro();
@@ -356,10 +356,10 @@ void account::pay()
             merchant_pay();
             break;
         case 7:
-            book_train();
+           // book_train();
             break;
         case 8:
-            book_bus();
+            //book_bus();
             break;
         }
 
