@@ -70,7 +70,7 @@ public:
     void change_det();
     void deposit();
     void show_bal();
-    int check_pin();
+    int check_pin(int);
 
     //function prototype regarding BASICS ends here
 
@@ -229,8 +229,6 @@ void account::change_det()
         cout << "\n 05.ADDHAR NUMBER";
         cout << "\n 06.PERMANENT ADDRESS";
         cout << "\n 07.PIN NO";
-        cout << "\n 06.PIN NO";
-        cout << "\n 06.PIN NO";
         cout << "\n ENTER YOUR CHOICE(1-6):-";
         cin >> choice;
 
