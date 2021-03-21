@@ -867,7 +867,7 @@ void account::pension_funds()
     long long pen_funds;
 
     cout<<"ENTER THE PIN NUMBER:-"<<endl;
-    gets(pin_no)
+    cin>>(pin_no);
     pen_funds=acc_bal+(acc_bal*5*1/100);
     cout<<"YOUR TOTAL PENSION FUNDS ARE: "<<pen_funds;
     getch();
@@ -877,7 +877,7 @@ void account::gold_funds()
     long long gold_fund;
 
     cout<<"ENTER THE PIN NUMBER:-"<<endl;
-    gets(pin_no)
+    cin>>(pin_no);
     gold_fund=acc_bal+(acc_bal*20*1/100);
     cout<<"YOUR TOTAL GOLD FUNDS ARE: "<<gold_fund;
     getch();
@@ -888,9 +888,9 @@ void account::pay_taxes()
 {
     int tax;
     cout<<"ENTER YOUR SALARY:-"<<endl;
-    gets(salary)
+    cin>>(salary);
     cout<<"ENTER YOUR PAN NUMBER:-"<<endl;
-    gets(pan_number);
+    cin>>(pan_number);
     if(salary>0 && salary<=250000)
         tax=0;
     else if(salary>250000 && salary<=500000)
