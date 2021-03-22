@@ -199,6 +199,7 @@ void account::first_window()
             getch();
             break;
          case 12:
+
             break;
          case 13:
             exit(0);
