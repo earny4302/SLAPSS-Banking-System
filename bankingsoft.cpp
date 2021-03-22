@@ -357,7 +357,7 @@ void account::deposit()
     int amount;
     cout << "\n ENTER THE AMOUNT TO BE DEPOSITED:- \t";
     cin>>amount;
-    cout<<"\nENTER YOUR PIN";
+    cout<<"\nENTER YOUR PIN:-\t";
     cin>>temp_pin;
     x=check_pin(temp_pin);
     if(x==1){
@@ -393,12 +393,12 @@ void account::pay(int amount){
         }
         if (acc_bal < amount)
         {
-            cout << "INSUFFIECIENT BALANCE";
+            cout << "\nINSUFFIECIENT BALANCE";
             getch();
         }
     }
     else
-        cout<<"YOU ENTERED WRONG PIN";
+        cout<<"\nYOU ENTERED WRONG PIN";
         getch();
 
 };
@@ -416,6 +416,10 @@ void account::pay_intro()
         cout << "\n 06.MERCHANT PAYMENT";
         cout << "\n 07.BOOK TRAIN";
         cout << "\n 08.BOOK BUS";
+        cout << "\n 09.BACK TO PREVIOUS MENU";
+        cout << "\n 10.EXIT";
+        cout << "\n ENTER YOUR CHOICE:-\t";
+        cin>>choice;
 
         switch (choice)
         {
@@ -443,6 +447,10 @@ void account::pay_intro()
         case 8:
             book_bus();
             break;
+        case 9:
+            break;
+        case10:
+            exit(0);
         }
 
     } while (choice > 9);
