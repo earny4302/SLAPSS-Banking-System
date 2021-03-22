@@ -108,7 +108,7 @@ public:
     //function prototype regarding LOAN ends here
 
     //functions prototype regarding INSURANCE starts from here
-    void insurance_intro();
+    //void insurance_intro();
     void life_insurance();
     void car_insurance();
     void health_insurance();
@@ -188,13 +188,13 @@ void account::first_window()
             loan_intro();
             break;
         case 9:
-            insurance_intro();
+            //insurance_intro();
             break;
         case 10:
             donate_intro();
             break;
         case 11:
-            //INVEST
+            invest_intro();
             break;
         case 12:
             cout<<"\n WE ARE HERE FOR YOU 24*7";
@@ -268,6 +268,7 @@ void account::show_details(){
     cout<<"\n\t TOTAL BALANCE OF ACCOUNT HOLDER:-"<<acc_bal;
     cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<fixed<<mob_no;
     cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<fixed<<addhar_no;
+    getch();
     
 }
 void account::change_det()
@@ -463,6 +464,28 @@ void account::electricity_pay()
     cout << "ENTER YOUR IVRS NO.:-\t";
     cin >> ivrs_no;
     cout << "\nENTER THE AMOUNT TO BE PAID:-\t";
+    cin >> amount;
+    pay(amount);
+}
+void account::water_pay(){
+    int bill_no;
+    int amount;
+    
+
+    cout << "ENTER YOUR WATER BILL NO:-\t";
+    cin >> bill_no;
+    cout << "ENTER AMOUNT TO PAID:-\t";
+    cin >> amount;
+    pay(amount);
+}
+void account::dth_pay(){
+    int card_no;
+    int amount;
+    int pin1;
+
+    cout << "ENTER YOUR CARD NO:-\t";
+    cin >> card_no;
+    cout << "ENTER AMOUNT TO PAID:-\t";
     cin >> amount;
     pay(amount);
 }
