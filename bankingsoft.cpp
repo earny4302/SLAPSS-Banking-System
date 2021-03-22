@@ -156,7 +156,10 @@ void account::first_window()
         cin >> choice;
 
         switch (choice)
-        {
+    {
+        case 1:
+            show_details();
+            break;
         case 2:
             change_det();
             break;
