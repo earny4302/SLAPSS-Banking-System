@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <string.h>
 #include <stdlib.h>
+#include<iomanip>
 using namespace std;
 class account
 {
@@ -265,8 +266,8 @@ void account::show_details(){
     cout<<"\n\t ADDRESS OF ACCOUNT HOLDER:-"<<address;
     cout<<"\n\t NOMINEE OF ACCOUNT HOLDER:-"<<nominee;
     cout<<"\n\t TOTAL BALANCE OF ACCOUNT HOLDER:-"<<acc_bal;
-    cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<mob_no;
-    cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<addhar_no;
+    cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<setprecision(12)<<mob_no;
+    cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<setprecision(12)<<addhar_no;
     
 }
 void account::change_det()
@@ -361,6 +362,9 @@ void account::deposit()
     x=check_pin(temp_pin);
     if(x==1){
         acc_bal=acc_bal+amount;
+        cout<<"\nWE ADDED "<<amount<<" IN YOUR ACCOUNT";
+        cout<<"\nYOUR CURRENT BALANCE IS:-\t "<<acc_bal;
+        getch();
     }
     if(x!=1){
         system("cls");
