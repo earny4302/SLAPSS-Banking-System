@@ -79,7 +79,8 @@ public:
     //function prototype regarding BASICS ends here
 
     //functions prototype regarding PAYMENTS starts from here
-    void pay();
+    void pay(int);
+    void pay_intro();
     void electricity_pay();
     void water_pay();
     void dth_pay();
@@ -173,7 +174,7 @@ void account::first_window()
             loan_into();
             break;
         case 6:
-            pay();
+            pay_intro();
             break;
         case 7:
            // transfer_fund();
@@ -322,7 +323,7 @@ void account::change_det()
             getch();
         }
     } while (choice > 7);
-};
+}
 void account::show_bal()
 {
     system("CLS");
@@ -335,12 +336,11 @@ int account::check_pin(int check_p)
     {
         return 1;
     }
-    else if(check_p!=pin_no)
+    else (check_p!=pin_no)
     {
         return 0;
     }
-    else 
-        return 0;
+  
 }
 void account::deposit()
 {
@@ -365,7 +365,34 @@ void account::deposit()
 //functions defination regarding BASICS ends here
 
 //functioms definations regarding PAYMENTS starts from here
-void account::pay()
+void account::pay(int amount){
+    int temp_pin;
+    cout<<"\nENTER YOUR PIN:-\t";
+    cin>>temp_pin;
+    int x=check_pin(temp_pin);
+     if (x ==1)
+    {
+        if (acc_bal >= amount)
+        {
+            acc_bal = acc_bal - amount;
+            cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
+            cout<<"\nWE DEDUCTED "<<amount<<" FROM ACCOUNT";
+            cout<<"\nTHANK YOU FOR CHOOSING US";
+            cout<<"\nYOUR REMAINING BALANCE IS "<<acc_bal;
+            getch();
+        }
+        if (acc_bal < amount)
+        {
+            cout << "INSUFFIECIENT BALANCE";
+            getch();
+        }
+    }
+    else
+        cout<<"YOU ENTERED WRONG PIN";
+        getch();
+
+};
+void account::pay_intro()
 {
     int choice;
     do
@@ -421,21 +448,7 @@ void account::electricity_pay()
     cin >> amount;
     cout << "\nENTER YOUR PIN NO:-\t";
     cin >> pin1;
-    if (pin1 == pin_no)
-    {
-        if (acc_bal >= amount)
-        {
-            cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
-            acc_bal = acc_bal - amount;
-            show_bal();
-            getch();
-        }
-        if (acc_bal < amount)
-        {
-            cout << "INSUFFIECIENT BALANCE";
-            getch();
-        }
-    }
+   
     if (pin1 != pin_no)
     {
         cout << "WRONG PIN";
@@ -627,6 +640,16 @@ void account::book_bus()
     cin>>choice;
     switch(choice){
         case 1:
+            cout<<"\nENTER YOUR PIN:-\t";
+            cin>>temp_pin;
+            int x=check_pin(temp_pin);
+            if(x==1){
+                acc_bal=acc_bal-price;
+                cout<<"\nTHANK YOU FOR CHOOSING US";
+                cout<<"\nWE DEDUCTED "<<price<<" FROM YOUR ACCOUNT";
+                show_bal();
+                getch();
+            }
             break;
         case 2:
             break;
@@ -985,9 +1008,9 @@ void account::gold_funds()
 void account::pay_taxes()
 {
     int tax;
-    cout<<"ENTER YOUR SALARY:-"<<endl;
+    cout<<"\nENTER YOUR SALARY:-"<<endl;
     cin>>(salary);
-    cout<<"ENTER YOUR PAN NUMBER:-"<<endl;
+    cout<<"\nENTER YOUR PAN NUMBER:-"<<endl;
     cin>>(pan_number);
     if(salary>0 && salary<=250000)
         tax=0;
@@ -997,14 +1020,14 @@ void account::pay_taxes()
         tax=20;
     else if(salary>1000000)
         tax=30;
-    cout<<"TOTAL TAX PERCENTAGE: "<<tax<<endl;
+    cout<<"\nTOTAL TAX PERCENTAGE: "<<tax<<endl;
     int total_tax=salary*tax/100;
     if(acc_bal>=total_tax){
         acc_bal-=total_tax;
-        cout<<"TAX PAID SUCCESSFULLY"<<endl;
+        cout<<"\nTAX PAID SUCCESSFULLY"<<endl;
     }
     else{
-        cout<<"YOU DON'T HAVE ENOUGH BALANCE TO PAY TAX"<<endl;
+        cout<<"\nYOU DON'T HAVE ENOUGH BALANCE TO PAY TAX"<<endl;
     }
     getch();
 }
