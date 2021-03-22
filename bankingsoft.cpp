@@ -7,7 +7,7 @@ using namespace std;
 class account
 {
 public:
-    //std:  char my_name;
+    
     char my_name[50];
     char father_n[50];
     char mother_n[550];
@@ -19,6 +19,7 @@ public:
     char login_pass[50];
     int pin_no;
     long long acc_bal;
+    int account_no;
     //variables regarding loans starts
     //variables regarding home loan starts
     char homeloan_newadd[200];
@@ -55,8 +56,11 @@ public:
     int agri_time;
     //varialbes regarding agricultural loan ends
     //variables regaring LOANS ends
+    long long sav_funds=0;
+    long long pen_funds=0;
 
     //function prototype regarding BASICS starts from here
+    void allot_acc_no(int);
     int login_check( char arr1[50],    char arr2[50],int i){
         if(strcmp(arr1,login_user)==0){
             if(strcmp(arr2,login_pass)==0){
@@ -93,7 +97,7 @@ public:
     //functions prototype regarding PAYMENTS end here
 
     //functions prototype regarding LOAN start from here
-    void loan_into();
+    void loan_intro();
     void home_loan();
     void vehicle_loan();
     void gold_loan();
@@ -118,7 +122,7 @@ public:
     void donate_intro();
     //function prototype regarding DONATION ends here 
     //functions prototype regarding INVEST starts from here
-    void demat_services();
+    void invest_intro();
     void saving_funds();
     void pension_funds();
     void gold_funds();
@@ -143,13 +147,13 @@ void account::first_window()
         cout << "\n 02.CHANGE DETAILS";
         cout << "\n 03.DEPOSIT MONEY";
         cout << "\n 04.CHECK BALANCE";
-        cout << "\n 05.APPLY FOR LOAN";
-        cout << "\n 06.PAY TO MERCHANT";
-        cout << "\n 07.TRANSFER FUNDS";
-        cout << "\n 08.INSURANCE";
-        cout << "\n 09.DONATION";
-        cout << "\n 10.INVEST";
-        cout << "\n 11.PAY TAXES";
+        cout << "\n 05.PAY TO MERCHANT";
+        cout << "\n 06.TRANSFER FUNDS";
+        cout << "\n 07.PAY TAXES";
+        cout << "\n 08.APPLY FOR LOAN";
+        cout << "\n 09.INSURANCE";
+        cout << "\n 10.DONATION";
+        cout << "\n 11.INVEST";
         cout << "\n 12.TALK TO CUSTOMER CARE";
         cout << "\n 13.BACK TO MAIN MENU";
         cout << "\n 14.EXIT PROGRAM";
@@ -171,27 +175,25 @@ void account::first_window()
             show_bal();
             break;
         case 5:
-            loan_into();
-            break;
-        case 6:
             pay_intro();
             break;
+        case 6:
+            transfer_fund();
+            break;
         case 7:
-           // transfer_fund();
+            pay_taxes();
             break;
         case 8:
-            //insurance_intro();
+            loan_intro();
             break;
         case 9:
-            donate_intro();
+            insurance_intro();
             break;
         case 10:
-            cout << "ENTER PIN NO:-\t";
-            cin >> pin_no;
+            donate_intro();
             break;
         case 11:
-            cout << "ENTER PIN NO:-\t";
-            cin >> pin_no;
+            //INVEST
             break;
         case 12:
             cout<<"\n WE ARE HERE FOR YOU 24*7";
@@ -250,9 +252,13 @@ void account::get_det()
     cout << "\n SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-\t";
     cin >> pin_no;
 
-};
+}
+void account::allot_acc_no(int temp){
+    account_no=1000+temp;
+}
+
 void account::show_details(){
-    cout<<"\n\t ACCOUNT NO:-";
+    cout<<"\n\t ACCOUNT NO:-"<<account_no;
     cout<<"\n\t NAME OF ACCOUNT HOLDER:-"<<my_name;
     cout<<"\n\t FATHER'S NAME OF ACCOUNT HOLDER:-"<<father_n;
     cout<<"\n\t MOTHER'S NAME OF ACCOUNT HOLDER:-"<<mother_n;
@@ -326,7 +332,7 @@ void account::change_det()
 }
 void account::show_bal()
 {
-    system("CLS");
+    
     cout << "\n YOUR CURRENT BALANCE IS:- "<<acc_bal; 
     getch();   
 }
@@ -336,7 +342,7 @@ int account::check_pin(int check_p)
     {
         return 1;
     }
-    else (check_p!=pin_no)
+    else
     {
         return 0;
     }
@@ -428,10 +434,10 @@ void account::pay_intro()
             merchant_pay();
             break;
         case 7:
-           // book_train();
+            book_train();
             break;
         case 8:
-            //book_bus();
+            book_bus();
             break;
         }
 
@@ -446,76 +452,7 @@ void account::electricity_pay()
     cin >> ivrs_no;
     cout << "\nENTER THE AMOUNT TO BE PAID:-\t";
     cin >> amount;
-    cout << "\nENTER YOUR PIN NO:-\t";
-    cin >> pin1;
-   
-    if (pin1 != pin_no)
-    {
-        cout << "WRONG PIN";
-        getch();
-    }
-}
-void account::water_pay()
-{
-    int amount;
-    int pin1;
-    long id_no;
-    cout << "ENTER YOUR ID_NO:-\t";
-    cin >> id_no;
-    cout << "ENTER AMOUNT TO PAID:-\t";
-    cin >> amount;
-    cout << "ENTER PIN NO.:-\t";
-    cin >> pin1;
-    if (pin1 == pin_no)
-    {
-        if (acc_bal >= amount)
-        {
-            cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
-            acc_bal = acc_bal - amount;
-            getch();
-        }
-        if (acc_bal < amount)
-        {
-            cout << "INSUFFIECIENT BALANCE";
-            getch();
-        }
-    }
-    if (pin1 != pin_no)
-    {
-        cout << "WRONG PIN";
-        getch();
-    }
-}
-void account::dth_pay()
-{
-    int amount;
-    long setupbox_no;
-    int pin1;
-    cout << "ENTER YOUR SETUP BOX NO:-\t";
-    cin >> setupbox_no;
-    cout << "ENTER AMOUNT TO PAID:-\t";
-    cin >> amount;
-    cout << "ENTER PIN NO.:-\t";
-    cin >> pin1;
-    if (pin1 == pin_no)
-    {
-        if (acc_bal >= amount)
-        {
-            cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
-            acc_bal = acc_bal - amount;
-            getch();
-        }
-        if (acc_bal < amount)
-        {
-            cout << "INSUFFIECIENT BALANCE";
-            getch();
-        }
-    }
-    if (pin1 != pin_no)
-    {
-        cout << "WRONG PIN";
-        getch();
-    }
+    pay(amount);
 }
 void account::premobile_pay()
 {
@@ -527,27 +464,7 @@ void account::premobile_pay()
     cin >> mobile_no;
     cout << "ENTER AMOUNT TO PAID:-\t";
     cin >> amount;
-    cout << "ENTER PIN NO.:-\t";
-    cin >> pin1;
-    if (pin1 == pin_no)
-    {
-        if (acc_bal >= amount)
-        {
-            cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
-            acc_bal = acc_bal - amount;
-            getch();
-        }
-        if (acc_bal < amount)
-        {
-            cout << "INSUFFIECIENT BALANCE";
-            getch();
-        }
-    }
-    if (pin1 != pin_no)
-    {
-        cout << "WRONG PIN";
-        getch();
-    }
+    pay(amount);
 }
 void account::fastag_pay()
 {
@@ -559,27 +476,7 @@ void account::fastag_pay()
     cin >> fastag_no;
     cout << "ENTER AMOUNT TO PAID:-\t";
     cin >> amount;
-    cout << "ENTER PIN NO.:-\t";
-    cin >> pin1;
-    if (pin1 == pin_no)
-    {
-        if (acc_bal >= amount)
-        {
-            cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
-            acc_bal = acc_bal - amount;
-            getch();
-        }
-        if (acc_bal < amount)
-        {
-            cout << "INSUFFIECIENT BALANCE";
-            getch();
-        }
-    }
-    if (pin1 != pin_no)
-    {
-        cout << "WRONG PIN";
-        getch();
-    }
+    pay(amount);   
 }
 void account::merchant_pay()
 {
@@ -591,27 +488,7 @@ void account::merchant_pay()
     cin >> shop_no;
     cout << "ENTER AMOUNT TO PAID:-\t";
     cin >> amount;
-    cout << "ENTER PIN NO.:-\t";
-    cin >> pin1;
-    if (pin1 == pin_no)
-    {
-        if (acc_bal >= amount)
-        {
-            cout << "\nYOUR TRANSACTION IS SUCCESSFUL";
-            acc_bal = acc_bal - amount;
-            getch();
-        }
-        if (acc_bal < amount)
-        {
-            cout << "INSUFFIECIENT BALANCE";
-            getch();
-        }
-    }
-    if (pin1 != pin_no)
-    {
-        cout << "WRONG PIN";
-        getch();
-    }
+    pay(amount);
 }
 void account::book_bus()
 {   system("cls");
@@ -640,16 +517,7 @@ void account::book_bus()
     cin>>choice;
     switch(choice){
         case 1:
-            cout<<"\nENTER YOUR PIN:-\t";
-            cin>>temp_pin;
-            int x=check_pin(temp_pin);
-            if(x==1){
-                acc_bal=acc_bal-price;
-                cout<<"\nTHANK YOU FOR CHOOSING US";
-                cout<<"\nWE DEDUCTED "<<price<<" FROM YOUR ACCOUNT";
-                show_bal();
-                getch();
-            }
+            pay(price);
             break;
         case 2:
             break;
@@ -658,13 +526,59 @@ void account::book_bus()
             getch();
 
     }
-
-
 }
+void account::book_train()
+{   system("cls");
+    char boarding[100];
+    char destinattion[100];
+    int distance;
+    int price;
+    int temp_pin;
+    int choice;
+    cout<<"\n------------------------------------------------------------";
+    cout<<"\n\t\tWELCOME TO TRAIN TICKET BOOKING WINDOW";
+    cout<<"\n------------------------------------------------------------";
+    cout<<"\n\tENTER YOUR BOARDING STATION:-\t";
+    cin.clear();
+    cin.sync();
+    cin.getline(boarding,100);
+    cout<<"\n\tENTER YOUR DESTINATION STATION:-";
+    cin.clear();
+    cin.sync();
+    cin.getline(destinattion,100);
+    cout<<"\n\tENTER THE  DISTANCE BETWEEN TWO POINTS:-";
+    cin>>distance;
+    price=distance*2;
+    cout<<"\n\tTOTAL COST OF YOUR TRAVEL IS:-"<<price;
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR TRAVEL(TYPE 1 FOR YES, 2 FOR NO)";
+    cin>>choice;
+    switch(choice){
+        case 1:
+            pay(price);
+            break;
+        case 2:
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";                                                                                 
+            getch();
+
+    }
+}
+void account::transfer_fund(){
+    int amount;
+    int temp_acc_no;
+    system("CLS");
+    cout<<"\nENTER THE ACCOUNT NO TO WHICH YOU WANT TO TRANSFER FUND:-\t";
+    cin>>temp_acc_no;
+    cout<<"\nENTER THE AMOUNT TO BE TRANSFER:-\t";
+    cin>>amount;
+    pay(amount);
+}
+
 //functions definations regarding PAYMENTS ends here
 
 //functions defination regarding LOAN start from here
-void account::loan_into()
+void account::loan_intro()
 {
     int choice;
     do
@@ -969,39 +883,114 @@ void account::donate_intro()
 }
 //function defination regarding DONATION ends here
 // functions defination regarding INVEST starts here
-void account::demat_services()
-{
+void account::invest_intro()
+{   int choice;
+    do
+    {
+        cout << "\n WHERE YOU WANT TO INVEST:-" ;
+        cout << "\n 01.SAVINGS FUNDS";
+        cout << "\n 02.PENSION FUND";
+        cout << "\n 03.GOLD FUND";
+        cout << "\nENTER YOUR CHOICE(1-3):-\t";
+        cin>>choice;
+        switch (choice)
+        {
+        case 1:
+            saving_funds();
+            break;
+        case 2:
+            pension_funds();
+            break;
+        case 3:
+            gold_funds();
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";
+            getch();
+        }
+
+    } while (choice > 9);
 
 }
 void account::saving_funds()
 {
-    long long sav_funds;
+    
+    int amount;
 
     cout<<"ENTER THE PIN NUMBER:-"<<endl;
     cin>>(pin_no);
-    sav_funds=acc_bal+(acc_bal*7*1/100);
-    cout<<"YOUR TOTAL SAVINGS FUNDS ARE: "<<sav_funds;
-    getch();
+    int x=check_pin(pin_no);
+    if(x==1){
+        cout<<"\nENTER THE AMOUNT DEPOSITED FOR SAVINGS FUND:-\t";
+        cin>>amount;
+        if(amount<acc_bal){
+                    acc_bal=acc_bal-amount;
+                    sav_funds=sav_funds+amount;
+                    cout<<"YOUR TOTAL SAVINGS  FUNDS ARE: "<<sav_funds;
+                    getch();
+                }
+                else
+                 cout<<"\nINSUFFICIENT BALANCE";
+                    getch();
+    }
+    else
+        cout<<"\n WRONG PIN";
+        getch();
 }
 void account::pension_funds()
 {
-    long long pen_funds;
+    
+    int amount;
 
     cout<<"ENTER THE PIN NUMBER:-"<<endl;
     cin>>(pin_no);
-    pen_funds=acc_bal+(acc_bal*5*1/100);
-    cout<<"YOUR TOTAL PENSION FUNDS ARE: "<<pen_funds;
-    getch();
+    int x=check_pin(pin_no);
+    
+    if(x==1){
+        cout<<"\nENTER THE AMOUNT DEPOSITED FOR SAVINGS FUND:-\t";
+        cin>>amount;
+        
+        if(amount<acc_bal){
+                acc_bal=acc_bal-amount;
+                pen_funds=pen_funds+amount;
+                cout<<"YOUR TOTAL PENSION FUNDS ARE: "<<pen_funds;
+                getch();
+            }
+            else
+             cout<<"\nINSUFFICIENT BALANCE";
+                    getch();
+
+    }
+    else
+        cout<<"\n WRONG PIN";
+        getch();
 }
 void account::gold_funds()
 {
-    long long gold_fund;
+    long long gold_fund=0;
+    int amount;
 
     cout<<"ENTER THE PIN NUMBER:-"<<endl;
     cin>>(pin_no);
-    gold_fund=acc_bal+(acc_bal*20*1/100);
-    cout<<"YOUR TOTAL GOLD FUNDS ARE: "<<gold_fund;
-    getch();
+    int x=check_pin(pin_no);
+    
+    if(x==1){
+                cout<<"\nENTER THE AMOUNT DEPOSITED FOR SAVINGS FUND:-\t";
+                cin>>amount;
+               
+                if(amount<acc_bal){
+                    acc_bal=acc_bal-amount;
+                    gold_fund=gold_fund+amount;
+                    cout<<"YOUR TOTAL GOLD FUNDS ARE: "<<gold_fund;
+                    getch();
+                }
+                else
+                    cout<<"\nINSUFFICIENT BALANCE";
+                    getch();
+    }
+    else
+        cout<<"\n WRONG PIN";
+        getch();
 }
 // functions defination regarding PAY TAX start here
 
@@ -1022,13 +1011,7 @@ void account::pay_taxes()
         tax=30;
     cout<<"\nTOTAL TAX PERCENTAGE: "<<tax<<endl;
     int total_tax=salary*tax/100;
-    if(acc_bal>=total_tax){
-        acc_bal-=total_tax;
-        cout<<"\nTAX PAID SUCCESSFULLY"<<endl;
-    }
-    else{
-        cout<<"\nYOU DON'T HAVE ENOUGH BALANCE TO PAY TAX"<<endl;
-    }
+    pay(total_tax); 
     getch();
 }
 
@@ -1062,7 +1045,9 @@ int main()
         switch (choice)
         {
         case 1:
-            customer[opening_no++].get_det();
+            customer[opening_no].get_det();
+            customer[opening_no].allot_acc_no(opening_no);
+            opening_no++;
             break;
 
         case 2:
