@@ -69,6 +69,7 @@ public:
             return -50;
     }
     void first_window();
+    void show_details();
     void get_det();
     void change_det();
     void deposit();
@@ -137,64 +138,65 @@ void account::first_window()
     do
     {
         cout << "\n HOW CAN WE HELP YOU:-";
-        cout << "\n 01.CHANGE DETAILS";
-        cout << "\n 02.DEPOSIT MONEY";
-        cout << "\n 03.CHECK BALANCE";
-        cout << "\n 04.APPLY FOR LOAN";
-        cout << "\n 05.PAY TO MERCHANT";
-        cout << "\n 06.TRANSFER FUNDS";
-        cout << "\n 07.INSURANCE";
-        cout << "\n 08.DONATION";
-        cout << "\n 09.INVEST";
-        cout << "\n 10.PAY TAXES";
-        cout << "\n 11.TALK TO CUSTOMER CARE";
-        cout << "\n 12.BACK TO MAIN MENU";
-        cout << "\n 13.EXIT PROGRAM";
+        cout << "\n 01.SHOW DETAILS";
+        cout << "\n 02.CHANGE DETAILS";
+        cout << "\n 03.DEPOSIT MONEY";
+        cout << "\n 04.CHECK BALANCE";
+        cout << "\n 05.APPLY FOR LOAN";
+        cout << "\n 06.PAY TO MERCHANT";
+        cout << "\n 07.TRANSFER FUNDS";
+        cout << "\n 08.INSURANCE";
+        cout << "\n 09.DONATION";
+        cout << "\n 10.INVEST";
+        cout << "\n 11.PAY TAXES";
+        cout << "\n 12.TALK TO CUSTOMER CARE";
+        cout << "\n 13.BACK TO MAIN MENU";
+        cout << "\n 14.EXIT PROGRAM";
         cout << "\n ENTER YOUR CHOICE(1-6):-";
         cin >> choice;
 
         switch (choice)
         {
-        case 1:
+        case 2:
             change_det();
             break;
-        case 2:
+        case 3:
             deposit();
             break;
-        case 3:
+        case 4:
             show_bal();
             break;
-        case 4:
+        case 5:
             loan_into();
             break;
-        case 5:
+        case 6:
             pay();
             break;
-        case 6:
+        case 7:
            // transfer_fund();
             break;
-        case 7:
+        case 8:
             //insurance_intro();
             break;
-        case 8:
-            donate_intro();
-            break;
         case 9:
-            cout << "ENTER PIN NO:-\t";
-            cin >> pin_no;
+            donate_intro();
             break;
         case 10:
             cout << "ENTER PIN NO:-\t";
             cin >> pin_no;
             break;
         case 11:
+            cout << "ENTER PIN NO:-\t";
+            cin >> pin_no;
+            break;
+        case 12:
             cout<<"\n WE ARE HERE FOR YOU 24*7";
             cout<<"\n CONTACT US ON 7999538548";
             getch();
             break;
-         case 12:
-            break;
          case 13:
+            break;
+         case 14:
             exit(0);
             break;
 
@@ -245,6 +247,18 @@ void account::get_det()
     cin >> pin_no;
 
 };
+void account::show_details(){
+    cout<<"\n\t ACCOUNT NO:-";
+    cout<<"\n\t NAME OF ACCOUNT HOLDER:-"<<my_name;
+    cout<<"\n\t FATHER'S NAME OF ACCOUNT HOLDER:-"<<father_n;
+    cout<<"\n\t MOTHER'S NAME OF ACCOUNT HOLDER:-"<<mother_n;
+    cout<<"\n\t ADDRESS OF ACCOUNT HOLDER:-"<<address;
+    cout<<"\n\t NOMINEE OF ACCOUNT HOLDER:-"<<nominee;
+    cout<<"\n\t TOTAL BALANCE OF ACCOUNT HOLDER:-"<<acc_bal;
+    cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<mob_no;
+    cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<addhar_no;
+    
+}
 void account::change_det()
 {
     int choice;
@@ -582,6 +596,44 @@ void account::merchant_pay()
         cout << "WRONG PIN";
         getch();
     }
+}
+void account::book_bus()
+{   system("cls");
+    char boarding[100];
+    char destinattion[100];
+    int distance;
+    int price;
+    int temp_pin;
+    int choice;
+    cout<<"\n------------------------------------------------------------";
+    cout<<"\n\t\tWELCOME TO BUS TICKET BOOKING WINDOW";
+    cout<<"\n------------------------------------------------------------";
+    cout<<"\n\tENTER YOUR BOARDING POINT:-\t";
+    cin.clear();
+    cin.sync();
+    cin.getline(boarding,100);
+    cout<<"\n\tENTER YOUR DESTINATION:-";
+    cin.clear();
+    cin.sync();
+    cin.getline(destinattion,100);
+    cout<<"\n\tENTER THE  DISTANCE BETWEEN TWO POINTS:-";
+    cin>>distance;
+    price=distance*2;
+    cout<<"\n\tTOTAL COST OF YOUR TRAVEL IS:-"<<price;
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR TRAVEL(TYPE 1 FOR YES, 2 FOR NO)";
+    cin>>choice;
+    switch(choice){
+        case 1:
+            break;
+        case 2:
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";                                                                                 
+            getch();
+
+    }
+
+
 }
 //functions definations regarding PAYMENTS ends here
 
@@ -1002,7 +1054,7 @@ int main()
             for(int i=0;i<opening_no;i++)
             {
                 int x=customer[i].login_check(check_user,check_pass,i);
-                if(x!=-1){
+                if(x!=-50){
                     current_no=i;
                     break;
                 }
