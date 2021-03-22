@@ -211,7 +211,7 @@ void account::first_window()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice > 13);
+    } while (choice != 14);
 
 
 }
@@ -266,8 +266,8 @@ void account::show_details(){
     cout<<"\n\t ADDRESS OF ACCOUNT HOLDER:-"<<address;
     cout<<"\n\t NOMINEE OF ACCOUNT HOLDER:-"<<nominee;
     cout<<"\n\t TOTAL BALANCE OF ACCOUNT HOLDER:-"<<acc_bal;
-    cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<setprecision(12)<<mob_no;
-    cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<setprecision(12)<<addhar_no;
+    cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<fixed<<mob_no;
+    cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<fixed<<addhar_no;
     
 }
 void account::change_det()
