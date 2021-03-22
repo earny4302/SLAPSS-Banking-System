@@ -7,13 +7,14 @@ using namespace std;
 class account
 {
 public:
-    char my_name[60];
-    char father_n[60];
-    char mother_n[60];
-    char address[120];
-    char nominee[60];
-    long mob_no;
-    long addhar_no;
+    //std:  char my_name;
+    char my_name[50];
+    char father_n[50];
+    char mother_n[550];
+    char address[200];
+    char nominee[50];
+    long double mob_no;
+    long double addhar_no;
     char login_user[50];
     char login_pass[50];
     int pin_no;
@@ -56,14 +57,16 @@ public:
     //variables regaring LOANS ends
 
     //function prototype regarding BASICS starts from here
-    int login_check(char arr1[50],char arr2[50],int i){
-        if(strcmp(arr1,login_user)==1){
-            if(strcmp(arr2,login_pass)==1){
+    int login_check( char arr1[50],    char arr2[50],int i){
+        if(strcmp(arr1,login_user)==0){
+            if(strcmp(arr2,login_pass)==0){
                 return i;
             }
+            else 
+                return -50;
         }
         else 
-            return -1;
+            return -50;
     }
     void first_window();
     void get_det();
@@ -204,25 +207,40 @@ void account::first_window()
 
 }
 void account::get_det()
-{
+{      
     cout << "\n ENTER YOUR NAME:-\t";
-    gets(my_name);
+    cin.clear();
+    cin.sync();
+    cin.getline(my_name,50);
     cout << "\n ENTER YOUR FATHER'S NAME:-\t";
-    gets(father_n);
+    cin.clear();
+    cin.sync();
+    cin.getline(father_n,50);
     cout << "\n ENTER YOUR MOTHER'S NAME:-\t";
-    gets(mother_n);
+    cin.clear();
+    cin.sync();
+    cin.getline(mother_n,50);
     cout << "\n ENTER YOUR PERMANENT ADDRESS:-\t";
-    gets(mother_n);
+    cin.clear();
+    cin.sync();
+    cin.getline(address,200);
     cout << "\n ENTER YOUR MOBILE NUMBER:-\t";
     cin >> mob_no;
     cout << "\n ENTER YOUR ADDHAR NUMBER:\t-";
     cin >> addhar_no;
+    
     cout << "\n ENTER YOUR NOMINEE:-\t";
-    gets(nominee);
+    cin.clear();
+    cin.sync();
+    cin.getline(nominee,50);
     cout << "\n ENTER YOUR USERNAME FOR LOGIN:-\t";
-    gets(login_user);
+    cin.clear();
+    cin.sync();
+    cin.getline(login_user,50);
     cout << "\n ENTER YOUR PASSWORD FOR LOGIN:-\t";
-    gets(login_pass);    
+    cin.clear();
+    cin.sync();
+    cin.getline(login_pass,50);    
     cout << "\n SET UP YOUR PIN NO. FOR FURTHER TRANSACTIONS:-\t";
     cin >> pin_no;
 
@@ -247,15 +265,21 @@ void account::change_det()
         {
         case 1:
             cout << "\n ENTER NAME:-\t";
-            gets(my_name);
+            cin.clear();
+            cin.sync();
+            cin.getline( my_name,50);
             break;
         case 2:
             cout << "\n ENTER FATHER'S NAME:-\t";
-            gets(father_n);
+            cin.clear();
+            cin.sync();
+            cin.getline(father_n,50);
             break;
         case 3:
             cout << "\n ENTER MOTHER'S NAME:-\t";
-            gets(mother_n);
+            cin.clear();
+            cin.sync();
+            cin.getline(mother_n,50);
             break;
         case 4:
             cout << "\n ENTER MOBILE NUMBER:-\t";
@@ -268,7 +292,9 @@ void account::change_det()
        
         case 6:
             cout << "\n ENTER PERMANENT ADDRESS:-\t";
-            gets(address);
+            cin.clear();
+            cin.sync();
+            cin.getline(address,200);
             break;
          case 7:
             cout << "\n ENTER PIN NO:-\t";
@@ -292,10 +318,12 @@ int account::check_pin(int check_p)
     {
         return 1;
     }
-    if(check_p!=pin_no)
+    else if(check_p!=pin_no)
     {
         return 0;
     }
+    else 
+        return 0;
 }
 void account::deposit()
 {
@@ -599,7 +627,9 @@ void account::home_loan()
 {
     cout << "\n HOME LOAN";
     cout << "\n ENTER LOCATION OF HOME FOR WHICH YOU NEED LOAN:-";
-    gets(homeloan_newadd);
+    cin.clear();
+    cin.sync();
+    cin.getline(homeloan_newadd,200);
     cout << "\n ENTER YOUR CURRENT INCOME:- \t";
     cin >> current_income;
     cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
@@ -611,9 +641,13 @@ void account::vehicle_loan()
 {
     cout << "\n VEHICLE LOAN";
     cout << "\n ENTER THE MODEL OF THE VEHICLE";
-    gets(vehicle_model);
+    cin.clear();
+    cin.sync();
+    cin.getline(vehicle_model,100);
     cout << "\n ENTER THE VEHICLE INFORMATION";
-    gets(vehicle_info);
+    cin.clear();
+    cin.sync();
+    cin.getline(vehicle_info,500);
     cout << "\n ENTER YOUR CURRENT INCOME:- \t";
     cin >> current_income;
     cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
@@ -639,9 +673,13 @@ void account::edu_loan()
 {
     cout << "\n EDUCATION LOAN";
     cout << "\n ENTER YOUR FIELD OF EDUCATION";
-    gets(edu_field);
+    cin.clear();
+    cin.sync();
+    cin.getline(edu_field,100);
     cout << "\n ENTER YOUR EDUCTION COURSE INFORMATION";
-    gets(edu_info);
+    cin.clear();
+    cin.sync();
+    cin.getline(edu_info,500);
     cout << "\n ENTER COURSE DURATION(IN MONTHS)";
     cin >> edu_duration;
     cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
@@ -653,9 +691,13 @@ void account::agri_loan()
 {
     cout << "\n AGRICULTURE LOAN";
     cout << "\n ENTER THE CORPS GROWN IN THE FIELD";
-    gets(agri_crop);
+    cin.clear();
+    cin.sync();
+    cin.getline(agri_crop,200);
     cout << "\n ENTER THE INFO OF CROPS AND FIELD";
-    gets(agri_info);
+    cin.clear();
+    cin.sync();
+    cin.getline(agri_info,800);
     cout << "\n ENTER YOUR AREA OF THE FIELD";
     cin >> agri_area;
     cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
@@ -924,13 +966,18 @@ int main()
     char check_user[50];
     char check_pass[50];
     int choice;
+    
     do
-    {
-        cout << "\n\t\t\t\t\t\t\t\t\t\tWELCOME TO SLAPPS BANK";
-        cout << "\n MAIN MENU:-";
-        cout << "\n 01.NEW CUSTOMER";
-        cout << "\n 02.LOGIN";
-        cout << "\n 03.EXIT";
+    {   
+        cout << "\n------------------------------------------------------------------------------------";
+        cout << "\n------------------------------------------------------------------------------------";
+        cout << "\n\t\tWELCOME TO SLAPPS BANK";
+        cout << "\n------------------------------------------------------------------------------------";
+        cout << "\n------------------------------------------------------------------------------------";
+        cout << "\n\t MAIN MENU:-";
+        cout << "\n\t 01.NEW CUSTOMER";
+        cout << "\n\t 02.LOGIN";
+        cout << "\n\t 03.EXIT";
 
         cout << "\n ENTER YOUR CHOICE(1-3):-";
         cin >> choice;
@@ -938,15 +985,20 @@ int main()
         {
         case 1:
             customer[opening_no++].get_det();
-            
             break;
 
         case 2:
             system("CLS");
+            
+           
             cout << "\n ENTER YOUR USER NAME:-\t";
-            gets(check_user);
+            cin.clear();
+            cin.sync();
+            cin.getline(check_user,50);
             cout << "\n ENTER YOUR PASSWORD:-\t";
-            gets(check_pass);
+            cin.clear();
+            cin.sync();
+            cin.getline(check_pass,50);
             for(int i=0;i<opening_no;i++)
             {
                 int x=customer[i].login_check(check_user,check_pass,i);
@@ -972,7 +1024,8 @@ int main()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice > 3);
+    } while (choice!= 3);
+    
 
     return 0;
 }
