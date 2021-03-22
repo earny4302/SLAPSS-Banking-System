@@ -14,8 +14,8 @@ public:
     char mother_n[550];
     char address[200];
     char nominee[50];
-    long double mob_no;
-    long double addhar_no;
+    long long mob_no;
+    long long addhar_no;
     char login_user[50];
     char login_pass[50];
     int pin_no;
@@ -152,13 +152,12 @@ void account::first_window()
         cout << "\n 06.TRANSFER FUNDS";
         cout << "\n 07.PAY TAXES";
         cout << "\n 08.APPLY FOR LOAN";
-        cout << "\n 09.INSURANCE";
-        cout << "\n 10.DONATION";
-        cout << "\n 11.INVEST";
-        cout << "\n 12.TALK TO CUSTOMER CARE";
-        cout << "\n 13.BACK TO MAIN MENU";
-        cout << "\n 14.EXIT PROGRAM";
-        cout << "\n ENTER YOUR CHOICE(1-6):-";
+        cout << "\n 09.DONATION";
+        cout << "\n 10.INVEST";
+        cout << "\n 11.TALK TO CUSTOMER CARE";
+        cout << "\n 12.BACK TO MAIN MENU";
+        cout << "\n 13.EXIT PROGRAM";
+        cout << "\n ENTER YOUR CHOICE(1-13):-";
         cin >> choice;
 
         switch (choice)
@@ -187,23 +186,21 @@ void account::first_window()
         case 8:
             loan_intro();
             break;
+       
         case 9:
-            //insurance_intro();
-            break;
-        case 10:
             donate_intro();
             break;
-        case 11:
+        case 10:
             invest_intro();
             break;
-        case 12:
+        case 11:
             cout<<"\n WE ARE HERE FOR YOU 24*7";
             cout<<"\n CONTACT US ON 7999538548";
             getch();
             break;
-         case 13:
+         case 12:
             break;
-         case 14:
+         case 13:
             exit(0);
             break;
 
@@ -211,7 +208,7 @@ void account::first_window()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice != 14);
+    } while (choice != 13);
 
 
 }
@@ -450,7 +447,7 @@ void account::pay_intro()
             break;
         case 9:
             break;
-        case10:
+        case 10:
             exit(0);
         }
 
@@ -741,7 +738,7 @@ void account::agri_loan()
 void account::donate_pay()
 {
     int amount, total; // total is the fund collected till date
-    long acc_bal = 10000;
+    long acc_bal;
     cout << "\n Enter the amount :";
     cin >> amount;
     if (acc_bal >= amount)
@@ -772,7 +769,10 @@ void account::donatef1() // function for donatiion in cm fund
 
     if (df1 == 1)
     {
-        donate_pay();
+            int amount;
+        cout << "\n Enter the amount :";
+    cin >> amount;
+        pay(amount);
     }
     else if (df1 == 2)
     {
@@ -799,8 +799,10 @@ void account::donatef2() // donation in pm fund
     cin >> df2;
 
     if (df2 == 1)
-    {
-        donate_pay();
+    {   int amount;
+        cout << "\n Enter the amount :";
+    cin >> amount;
+        pay(amount);
     }
     else if (df2 == 2)
     {
@@ -827,7 +829,10 @@ void account::donatef3() //function for donation in army charity fund
 
     if (df3 == 1)
     {
-        donate_pay();
+        int amount;
+        cout << "\n Enter the amount :";
+    cin >> amount;
+        pay(amount);
     }
     else if (df3 == 2)
     {
@@ -855,7 +860,10 @@ void account::donatef4() //Function df4 for Donation in slapps charity fund
 
     if (df4 == 1)
     {
-        donate_pay();
+            int amount;
+            cout << "\n Enter the amount :";
+    cin >> amount;
+        pay(amount);
     }
     else if (df4 == 2)
     {
