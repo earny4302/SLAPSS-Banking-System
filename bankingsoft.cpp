@@ -1061,6 +1061,9 @@ int main()
                     current_no=i;
                     break;
                 }
+                if(x=-50){
+                    current_no=-50;
+                }
             }
             if(current_no!=-50){
                 customer[current_no].first_window();
