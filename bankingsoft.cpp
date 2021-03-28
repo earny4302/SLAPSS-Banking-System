@@ -100,12 +100,20 @@ public:
 
     //functions prototype regarding LOAN start from here
     void loan_intro();
-    void home_loan();
-    void vehicle_loan();
-    void gold_loan();
-    void edu_loan();
-    void emi_loan();
-    void agri_loan();
+    void loan_pay();
+    void loan_apply_intro();
+    void home_loan_apply();
+    void vehicle_loan_apply();
+    void gold_loan_apply();
+    void edu_loan_apply();
+    void emi_loan_apply();
+    void agri_loan_apply();
+    void home_loan_pay();
+    void vehicle_loan_pay();
+    void gold_loan_pay();
+    void edu_loan_pay();
+    void emi_loan_pay();
+    void agri_loan_pay();
     //function prototype regarding LOAN ends here
 
     //functions prototype regarding INSURANCE starts from here
@@ -139,11 +147,11 @@ public:
 // functions defination regarding BASICS starts here
 void account::first_window()
 {
-    system("CLS");
     
     int choice;
     do
     {
+        system("CLS");
         cout << "\n HOW CAN WE HELP YOU:-";
         cout << "\n 01.SHOW DETAILS";
         cout << "\n 02.CHANGE DETAILS";
@@ -234,7 +242,7 @@ void account::get_det()
     cin.getline(address,200);
     cout << "\n ENTER YOUR MOBILE NUMBER:-\t";
     cin >> mob_no;
-    cout << "\n ENTER YOUR ADDHAR NUMBER:\t-";
+    cout << "\n ENTER YOUR ADDHAR NUMBER:-\t";
     cin >> addhar_no;
     
     cout << "\n ENTER YOUR NOMINEE:-\t";
@@ -547,7 +555,7 @@ void account::book_bus()
     cin>>distance;
     price=distance*2;
     cout<<"\n\tTOTAL COST OF YOUR TRAVEL IS:-"<<price;
-    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR TRAVEL(TYPE 1 FOR YES, 2 FOR NO)";
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR TRAVEL(TYPE 1 FOR YES, 2 FOR NO):- \t";
     cin>>choice;
     switch(choice){
         case 1:
@@ -584,7 +592,7 @@ void account::book_train()
     cin>>distance;
     price=distance*2;
     cout<<"\n\tTOTAL COST OF YOUR TRAVEL IS:-"<<price;
-    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR TRAVEL(TYPE 1 FOR YES, 2 FOR NO)";
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR TRAVEL(TYPE 1 FOR YES, 2 FOR NO):- \t";
     cin>>choice;
     switch(choice){
         case 1:
@@ -612,58 +620,139 @@ void account::transfer_fund(){
 //functions definations regarding PAYMENTS ends here
 
 //functions defination regarding LOAN start from here
-void account::loan_intro()
+void account::loan_pay()
 {
     int choice;
     do
-    {
+    {   system("CLS");
         cout << "FOLLOWING LOAN ARE AVAILABLE IN OUR BANK:-"  ;
         cout << "01.HOME LOAN" ;
         cout << "02.VEHICLE LOAN";
         cout << "03.GOLD LOAN";
         cout << "04.EDUCATION LOAN";
         cout << "05.AGRICULTURE LOAN";
-        cout << "06.YOUR CURRENT LOAN" ;
+        cout << "06.BACK TO PREVIOUS MENU";
 
         switch (choice)
         {
         case 1:
-            home_loan();
+            home_loan_pay();
             break;
         case 2:
-            vehicle_loan();
+            vehicle_loan_pay();
             break;
         case 3:
-            gold_loan();
+            gold_loan_pay();
             break;
         case 4:
-            edu_loan();
+            edu_loan_pay();
             break;
         case 5:
-            agri_loan();
+            agri_loan_pay();
+            break;
+        case 6:
             break;
         default:
             cout << "\n WRONG CHOICE";
             getch();
         }
 
-    } while (choice > 9);
+    } while (choice != 9);
+
 }
-void account::home_loan()
+void account::loan_intro()
 {
-    cout << "\n HOME LOAN";
-    cout << "\n ENTER LOCATION OF HOME FOR WHICH YOU NEED LOAN:-";
-    cin.clear();
-    cin.sync();
-    cin.getline(homeloan_newadd,200);
-    cout << "\n ENTER YOUR CURRENT INCOME:- \t";
-    cin >> current_income;
-    cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
-    cin >> homeloan_principal;
-    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
-    cin >> homeloan_time;
+    int choice;
+    do
+    {
+        cout << "HOW CAN WE HELP YOU"  ;
+        cout << "01.APPLY FOR NEW LOAN" ;
+        cout << "02.PAY FOR EXISTING LOAN";
+        cout << "03.BACK TO MAIN MENU";
+        
+        switch (choice)
+        {
+        case 1:
+            loan_apply_intro();
+            break;
+        case 2:
+            loan_pay();
+            break;
+        case 3:
+        
+            break;
+        
+        default:
+            cout << "\n WRONG CHOICE";
+            getch();
+        }
+
+    } while (choice !=3);
 }
-void account::vehicle_loan()
+void account::loan_apply_intro()
+{
+    int choice;
+    do
+    {   system("CLS");
+        cout << "FOLLOWING LOAN ARE AVAILABLE IN OUR BANK:-"  ;
+        cout << "01.HOME LOAN" ;
+        cout << "02.VEHICLE LOAN";
+        cout << "03.GOLD LOAN";
+        cout << "04.EDUCATION LOAN";
+        cout << "05.AGRICULTURE LOAN";
+        cout << "06.BACK TO PREVIOUS MENU";
+
+        switch (choice)
+        {
+        case 1:
+            home_loan_apply();
+            break;
+        case 2:
+            vehicle_loan_apply();
+            break;
+        case 3:
+            gold_loan_apply();
+            break;
+        case 4:
+            edu_loan_apply();
+            break;
+        case 5:
+            agri_loan_apply();
+            break;
+        case 6:
+            break;
+        default:
+            cout << "\n WRONG CHOICE";
+            getch();
+        }
+
+    } while (choice != 9);
+}
+void account::home_loan_apply()
+{   
+    if(1)
+    {
+        cout << "\n HOME LOAN";
+        cout << "\n ENTER LOCATION OF HOME FOR WHICH YOU NEED LOAN:-";
+        cin.clear();
+        cin.sync();
+        cin.getline(homeloan_newadd,200);
+        cout << "\n ENTER YOUR CURRENT INCOME:- \t";
+        cin >> current_income;
+        
+        cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
+        cin >> homeloan_principal;
+        cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+        cin >> homeloan_time;
+
+    }
+    else
+    {
+        cout<<"\n FIRST PAY EXISTING LOAN THEN APPLY FOR NEW ONE";
+        getch();
+    }
+}
+void account::vehicle_loan_apply()
 {
     cout << "\n VEHICLE LOAN";
     cout << "\n ENTER THE MODEL OF THE VEHICLE";
@@ -682,7 +771,7 @@ void account::vehicle_loan()
     cin >> vehicleloan_time;
     //cout << "\n DO YOU WANT VEHICLE INSURANCE";
 }
-void account::gold_loan()
+void account::gold_loan_apply()
 {
     cout << "\n GOLD LOAN";
     cout << "\n CURRENT PRICE OF GOLD :-";
@@ -695,7 +784,7 @@ void account::gold_loan()
     cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO REPAY THE AMOUNT:-";
     cin >> goldloan_time;
 }
-void account::edu_loan()
+void account::edu_loan_apply()
 {
     cout << "\n EDUCATION LOAN";
     cout << "\n ENTER YOUR FIELD OF EDUCATION";
@@ -713,7 +802,7 @@ void account::edu_loan()
     cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
     cin >> edu_time;
 }
-void account::agri_loan()
+void account::agri_loan_apply()
 {
     cout << "\n AGRICULTURE LOAN";
     cout << "\n ENTER THE CORPS GROWN IN THE FIELD";
@@ -1159,7 +1248,7 @@ int main()
              break;
 
         case 3:
-                int admin_log_check=admin_login();
+               /* int admin_log_check=admin_login();
                 if(admin_log_check==1)
                 {
                     admin_main_menu();
@@ -1168,7 +1257,7 @@ int main()
                 {
                     cout<<"\n WRONG ADMIN USERNAME OR PASSWORD";
                     getch();
-                }
+                }*/
             break;
         case 4:
             exit(0);
@@ -1178,7 +1267,7 @@ int main()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice!= 4);
+    } while (choice> 4);
     
 
     return 0;
