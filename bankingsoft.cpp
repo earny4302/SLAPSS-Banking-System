@@ -59,6 +59,7 @@ public:
     //variables regaring LOANS ends
     long long sav_funds=0;
     long long pen_funds=0;
+    long long gold_fund=0;
 
     //function prototype regarding BASICS starts from here
     void allot_acc_no(int);
@@ -1011,7 +1012,7 @@ void account::pension_funds()
 }
 void account::gold_funds()
 {
-    long long gold_fund=0;
+   
     int amount;
 
     cout<<"ENTER THE PIN NUMBER:-"<<endl;
@@ -1062,7 +1063,36 @@ void account::pay_taxes()
 
     // functions defination regarding PAY TAX end here
     // functions defination regarding INVEST end here
+    int admin_login()
+    {
+        char login_user[60]="slapssbank";
+        char temp_login_user[60];
+        char login_pass[60]="slappsbank";
+        char temp_login_pass[60];
+        cout<<"\nENTER THE ADMINISTRATION USERNAME";
+        cin.clear();
+        cin.sync();
+        cin.getline(temp_login_user,60);
+        cout<<"\nENTER THE ADMINISTRATION PASSWORD";
+        cin.clear();
+        cin.sync();
+        cin.getline(temp_login_pass,60);
+         if(strcmp(temp_login_pass,login_user)==0){
+            if(strcmp(temp_login_pass,login_pass)==0){
+                return 1;
+            }
+            else 
+                return 0;
+        }
+        else 
+            return 0;
+        
 
+    }
+    void admin_main_menu()
+    {
+
+    }
 int main()
 {
     account customer[100];
@@ -1081,10 +1111,11 @@ int main()
         cout << "\n------------------------------------------------------------------------------------";
         cout << "\n\t MAIN MENU:-";
         cout << "\n\t 01.NEW CUSTOMER";
-        cout << "\n\t 02.LOGIN";
-        cout << "\n\t 03.EXIT";
+        cout << "\n\t 02.REGISTERED CUSTOMER LOGIN";
+        cout << "\n\t 03.ADMINSTRAION LOGIN";
+        cout << "\n\t 04.EXIT";
 
-        cout << "\n ENTER YOUR CHOICE(1-3):-";
+        cout << "\n ENTER YOUR CHOICE(1-4):-";
         cin >> choice;
         switch (choice)
         {
@@ -1128,6 +1159,18 @@ int main()
              break;
 
         case 3:
+                int admin_log_check=admin_login();
+                if(admin_log_check==1)
+                {
+                    admin_main_menu();
+                }
+                else
+                {
+                    cout<<"\n WRONG ADMIN USERNAME OR PASSWORD";
+                    getch();
+                }
+            break;
+        case 4:
             break;
 
         default:
