@@ -1171,13 +1171,14 @@ int main()
                 }
             break;
         case 4:
+            exit(0);
             break;
 
         default:
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice!= 3);
+    } while (choice!= 4);
     
 
     return 0;
