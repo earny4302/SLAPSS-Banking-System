@@ -36,11 +36,13 @@ public:
     char vehicle_info[500];
     int vehicleloan_time;
     long vehicleloan_principal;
+    long vehicleloan_totalamount;
     //variables regarding vehicle loan ends
     //variables regarding gold loan starts
     float gold_amount;
     float goldloan_value;
     int goldloan_time;
+    long goldloan_totalamount;
     //variables regarding gold loan ends
     //variables regarding education loan starts
     char edu_field[100];
@@ -48,6 +50,7 @@ public:
     int edu_duration;
     long edu_fee;
     int edu_time;
+    long eduloan_totalamount;
     //variables regarding education loan ends
     //varialbes regarding agricultural loan starts
     char agri_crop[200];
@@ -55,6 +58,7 @@ public:
     float agri_area;
     long agri_amount;
     int agri_time;
+    long agroloan_totalamount;
     //varialbes regarding agricultural loan ends
     //variables regaring LOANS ends
     long long sav_funds=0;
@@ -218,7 +222,7 @@ void account::first_window()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice != 13);
+    } while (choice != 12);
 
 
 }
@@ -459,6 +463,9 @@ void account::pay_intro()
             break;
         case 10:
             exit(0);
+        default:
+            cout<<"\nWRONG CHOICE";
+            getch();
         }
 
     } while (choice > 9);
@@ -620,19 +627,128 @@ void account::transfer_fund(){
 //functions definations regarding PAYMENTS ends here
 
 //functions defination regarding LOAN start from here
+void account::home_loan_pay()
+{   
+    int choice;
+    cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<homeloan_totalamount;
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR PAYMENT (TYPE 1 FOR YES, 2 FOR NO):- \t";
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+            pay(homeloan_totalamount);
+            break;
+        case 2:
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";                                                                                 
+            getch();
+    }
+}
+void account::vehicle_loan_pay()
+{
+    int choice;
+    cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<homeloan_totalamount;
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR PAYMENT (TYPE 1 FOR YES, 2 FOR NO):- \t";
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+            pay(vehicleloan_totalamount);
+            break;
+        case 2:
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";                                                                                 
+            getch();
+    }
+
+}
+void account::gold_loan_pay()
+{
+    int choice;
+    int amount;
+    cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<goldloan_totalamount;
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR PAYMENT (TYPE 1 FOR YES, 2 FOR NO):- \t";
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cin>>amount;
+            
+            pay(amount);
+            eduloan_totalamount=eduloan_totalamount-amount;
+            break;
+        case 2:
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";                                                                                 
+            getch();
+    }
+
+}
+void account::edu_loan_pay()
+{
+    int choice;
+    int amount;
+    cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<eduloan_totalamount;
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR PAYMENT (TYPE 1 FOR YES, 2 FOR NO):- \t";
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cin>>amount;
+            pay(amount);
+            eduloan_totalamount=eduloan_totalamount-amount;
+            break;
+        case 2:
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";                                                                                 
+            getch();
+    }
+
+}
+void account::agri_loan_pay()
+{
+    int choice;
+    int amount;
+    cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<agroloan_totalamount;
+    cout<<"\n\tDO YOU WANT TO CONFIRM YOUR PAYMENT (TYPE 1 FOR YES, 2 FOR NO):- \t";
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cin>>amount;
+            pay(amount);
+            agroloan_totalamount=agroloan_totalamount-amount;
+            break;
+        case 2:
+            break;
+        default:
+            cout<<"\nWRONG CHOICE";                                                                                 
+            getch();
+    }
+
+}
 void account::loan_pay()
 {
     int choice;
     do
     {   system("CLS");
-        cout << "FOLLOWING LOAN ARE AVAILABLE IN OUR BANK:-"  ;
-        cout << "01.HOME LOAN" ;
-        cout << "02.VEHICLE LOAN";
-        cout << "03.GOLD LOAN";
-        cout << "04.EDUCATION LOAN";
-        cout << "05.AGRICULTURE LOAN";
-        cout << "06.BACK TO PREVIOUS MENU";
-
+        cout << "\nWHICH LOAN YOU WANT OT PAY:-"  ;
+        cout << "\n01.HOME LOAN" ;
+        cout << "\n02.VEHICLE LOAN";
+        cout << "\n03.GOLD LOAN";
+        cout << "\n04.EDUCATION LOAN";
+        cout << "\n05.AGRICULTURE LOAN";
+        cout << "\n06.BACK TO PREVIOUS MENU";
+        cout << "\nENTER YOUR CHOICE(1-6):-\t";
+        cin >> choice;
+        
         switch (choice)
         {
         case 1:
@@ -657,34 +773,35 @@ void account::loan_pay()
             getch();
         }
 
-    } while (choice != 9);
+    } while (choice != 6);
 
 }
 void account::loan_intro()
 {
     int choice;
     do
-    {
-        cout << "HOW CAN WE HELP YOU"  ;
-        cout << "01.APPLY FOR NEW LOAN" ;
-        cout << "02.PAY FOR EXISTING LOAN";
-        cout << "03.BACK TO MAIN MENU";
+    {   system("CLS");
+        cout << "\nHOW CAN WE HELP YOU"  ;
+        cout << "\n01.APPLY FOR NEW LOAN" ;
+        cout << "\n02.PAY FOR EXISTING LOAN";
+        cout << "\n03.BACK TO MAIN MENU";
+        cout << "\nENTER YOUR CHOICE(1-3):-\t";
+        cin >> choice;
         
         switch (choice)
         {
-        case 1:
-            loan_apply_intro();
-            break;
-        case 2:
-            loan_pay();
-            break;
-        case 3:
-        
-            break;
-        
-        default:
-            cout << "\n WRONG CHOICE";
-            getch();
+            case 1:
+                loan_apply_intro();
+                break;
+            case 2:
+                loan_pay();
+                break;
+            case 3:
+                break;
+            
+            default:
+                cout << "\n WRONG CHOICE";
+                getch();
         }
 
     } while (choice !=3);
@@ -694,13 +811,15 @@ void account::loan_apply_intro()
     int choice;
     do
     {   system("CLS");
-        cout << "FOLLOWING LOAN ARE AVAILABLE IN OUR BANK:-"  ;
-        cout << "01.HOME LOAN" ;
-        cout << "02.VEHICLE LOAN";
-        cout << "03.GOLD LOAN";
-        cout << "04.EDUCATION LOAN";
-        cout << "05.AGRICULTURE LOAN";
-        cout << "06.BACK TO PREVIOUS MENU";
+        cout << "\nFOLLOWING LOAN ARE AVAILABLE IN OUR BANK:-"  ;
+        cout << "\n01.HOME LOAN" ;
+        cout << "\n02.VEHICLE LOAN";
+        cout << "\n03.GOLD LOAN";
+        cout << "\n04.EDUCATION LOAN";
+        cout << "\n05.AGRICULTURE LOAN";
+        cout << "\n06.BACK TO PREVIOUS MENU";
+        cout << "\nENTER YOUR CHOICE(1-6):-\t";
+        cin >> choice;
 
         switch (choice)
         {
@@ -1154,20 +1273,22 @@ void account::pay_taxes()
     // functions defination regarding INVEST end here
     int admin_login()
     {
-        char login_user[60]="slapssbank";
+        char login_user[60]="abcd";
         char temp_login_user[60];
-        char login_pass[60]="slappsbank";
+        char login_pass[60]="abcd";
         char temp_login_pass[60];
-        cout<<"\nENTER THE ADMINISTRATION USERNAME";
+        cout<<"\nENTER THE ADMINISTRATION USERNAME:-\t";
         cin.clear();
         cin.sync();
         cin.getline(temp_login_user,60);
-        cout<<"\nENTER THE ADMINISTRATION PASSWORD";
+        cout<<"\nENTER THE ADMINISTRATION PASSWORD:-\t";
         cin.clear();
         cin.sync();
         cin.getline(temp_login_pass,60);
-         if(strcmp(temp_login_pass,login_user)==0){
-            if(strcmp(temp_login_pass,login_pass)==0){
+        if(strcmp(temp_login_pass,login_user)==0)
+        {
+            if(strcmp(temp_login_pass,login_pass)==0)
+            {
                 return 1;
             }
             else 
@@ -1178,9 +1299,41 @@ void account::pay_taxes()
         
 
     }
-    void admin_main_menu()
+    void admin_main_menu(int m,account n[100])
     {
+        int choice;
+        do
+        {
+            system("CLS");
+            cout<<"\nHOW CAN WE HELP YOU:-";
+            cout<<"\n01.SEE DETAILS OF ALL ACCOUNTS";
+            cout<<"\n02.RETURN TO PREVIOUS MENU";
+            cout<<"\n03.EXIT";
+            cout<<"\nENTER YOUR CHOICE(1-3):-";
+            cin>>choice;
 
+            switch(choice)
+            {
+                case 1:
+                    for (int i = 0; i < m; i++)
+                    {
+                        n[i].show_details();
+                    }
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    exit(0);
+                    break;
+                default:
+                    cout<<"\nWRONG CHOICE";
+                    getch();
+
+            }
+
+            
+        } while (choice!=2);
     }
 int main()
 {
@@ -1193,6 +1346,7 @@ int main()
     
     do
     {   
+        system("CLS");
         cout << "\n------------------------------------------------------------------------------------";
         cout << "\n------------------------------------------------------------------------------------";
         cout << "\n\t\tWELCOME TO SLAPPS BANK";
@@ -1216,8 +1370,6 @@ int main()
 
         case 2:
             system("CLS");
-            
-           
             cout << "\n ENTER YOUR USER NAME:-\t";
             cin.clear();
             cin.sync();
@@ -1248,26 +1400,27 @@ int main()
              break;
 
         case 3:
-               /* int admin_log_check=admin_login();
+                int admin_log_check;
+                admin_log_check=admin_login();
                 if(admin_log_check==1)
                 {
-                    admin_main_menu();
+                    admin_main_menu(opening_no,customer);
                 }
                 else
                 {
                     cout<<"\n WRONG ADMIN USERNAME OR PASSWORD";
                     getch();
-                }*/
+                }
             break;
         case 4:
             exit(0);
-            break;
+            
 
         default:
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice> 4);
+    } while (choice!= 4);
     
 
     return 0;
