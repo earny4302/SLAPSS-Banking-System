@@ -45,6 +45,7 @@ public:
     int goldloan_time;
     long goldloan_totalamount=0;
     int goldloan_rate=5;
+    int goldloan_principal;
 
     //variables regarding gold loan ends
     //variables regarding education loan starts
@@ -166,7 +167,6 @@ void account::first_window()
         cout << "\n 03.DEPOSIT MONEY";
         cout << "\n 04.CHECK BALANCE";
         cout << "\n 05.PAY TO MERCHANT";
-        
         cout << "\n 06.TRANSFER FUNDS";
         cout << "\n 07.PAY TAXES";
         cout << "\n 08.APPLY FOR LOAN";
