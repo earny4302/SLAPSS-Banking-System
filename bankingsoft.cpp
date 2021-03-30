@@ -27,30 +27,33 @@ public:
     long homeloan_principal;
     int homeloan_no;
     long current_income;
-    float homeloan_interest;
+    int homeloan_rate=8;
     int homeloan_time;
-    long homeloan_totalamount;
+    long homeloan_totalamount=0;
     //variables regarding home loan ends
     //variables regarding vehicle loan starts
     char vehicle_model[100];
     char vehicle_info[500];
     int vehicleloan_time;
     long vehicleloan_principal;
-    long vehicleloan_totalamount;
+    long vehicleloan_totalamount=0;
+    int vehicleloan_rate=9; 
     //variables regarding vehicle loan ends
     //variables regarding gold loan starts
     float gold_amount;
     float goldloan_value;
     int goldloan_time;
-    long goldloan_totalamount;
+    long goldloan_totalamount=0;
+    int goldloan_rate=5;
+
     //variables regarding gold loan ends
     //variables regarding education loan starts
     char edu_field[100];
-    char edu_info[500];
     int edu_duration;
-    long edu_fee;
+    long eduloan_principal;
     int edu_time;
-    long eduloan_totalamount;
+    long eduloan_totalamount=0;
+    int edUloan_rate=3;
     //variables regarding education loan ends
     //varialbes regarding agricultural loan starts
     char agri_crop[200];
@@ -58,7 +61,8 @@ public:
     float agri_area;
     long agri_amount;
     int agri_time;
-    long agroloan_totalamount;
+    long agroloan_totalamount=0;
+    int agriloan_rate=5;
     //varialbes regarding agricultural loan ends
     //variables regaring LOANS ends
     long long sav_funds=0;
@@ -162,6 +166,7 @@ void account::first_window()
         cout << "\n 03.DEPOSIT MONEY";
         cout << "\n 04.CHECK BALANCE";
         cout << "\n 05.PAY TO MERCHANT";
+        
         cout << "\n 06.TRANSFER FUNDS";
         cout << "\n 07.PAY TAXES";
         cout << "\n 08.APPLY FOR LOAN";
@@ -270,7 +275,7 @@ void account::allot_acc_no(int temp){
 }
 
 void account::show_details(){
-    cout<<"\n\t ACCOUNT NO:-"<<account_no;
+    cout<<"\n\n\t ACCOUNT NO:-"<<account_no;
     cout<<"\n\t NAME OF ACCOUNT HOLDER:-"<<my_name;
     cout<<"\n\t FATHER'S NAME OF ACCOUNT HOLDER:-"<<father_n;
     cout<<"\n\t MOTHER'S NAME OF ACCOUNT HOLDER:-"<<mother_n;
@@ -468,7 +473,7 @@ void account::pay_intro()
             getch();
         }
 
-    } while (choice > 9);
+    } while (choice!=9);
 };
 void account::electricity_pay()
 {
@@ -630,13 +635,17 @@ void account::transfer_fund(){
 void account::home_loan_pay()
 {   
     int choice;
+    int amount;
     cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<homeloan_totalamount;
     cout<<"\n\tDO YOU WANT TO CONFIRM YOUR PAYMENT (TYPE 1 FOR YES, 2 FOR NO):- \t";
     cin>>choice;
     switch(choice)
     {
         case 1:
-            pay(homeloan_totalamount);
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cin>>amount;
+            pay(amount);
+            homeloan_totalamount=homeloan_totalamount-amount;
             break;
         case 2:
             break;
@@ -648,13 +657,17 @@ void account::home_loan_pay()
 void account::vehicle_loan_pay()
 {
     int choice;
-    cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<homeloan_totalamount;
+    int amount;
+    cout<<"\nYOUR EXISTING HOME LOAN IS :-\t"<<vehicleloan_totalamount;
     cout<<"\n\tDO YOU WANT TO CONFIRM YOUR PAYMENT (TYPE 1 FOR YES, 2 FOR NO):- \t";
     cin>>choice;
     switch(choice)
     {
         case 1:
-            pay(vehicleloan_totalamount);
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cin>>amount;
+            pay(amount);
+            vehicleloan_totalamount=vehicleloan_totalamount-amount;
             break;
         case 2:
             break;
@@ -676,9 +689,8 @@ void account::gold_loan_pay()
         case 1:
             cout<<"\nENTER AMOUNT YOU WANT TO PAY";
             cin>>amount;
-            
             pay(amount);
-            eduloan_totalamount=eduloan_totalamount-amount;
+            goldloan_totalamount=goldloan_totalamount-amount;
             break;
         case 2:
             break;
@@ -845,11 +857,11 @@ void account::loan_apply_intro()
             getch();
         }
 
-    } while (choice != 9);
+    } while (choice != 6);
 }
 void account::home_loan_apply()
 {   
-    if(1)
+    if(homeloan_totalamount==0)
     {
         cout << "\n HOME LOAN";
         cout << "\n ENTER LOCATION OF HOME FOR WHICH YOU NEED LOAN:-";
@@ -858,12 +870,13 @@ void account::home_loan_apply()
         cin.getline(homeloan_newadd,200);
         cout << "\n ENTER YOUR CURRENT INCOME:- \t";
         cin >> current_income;
-        
         cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
         cin >> homeloan_principal;
         cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
         cin >> homeloan_time;
-
+        homeloan_totalamount=homeloan_principal+((homeloan_principal*homeloan_rate*homeloan_time)/100);
+        cout<<"\n YOU HAVE TO PAY BACK "<<homeloan_totalamount<<" IN "<<homeloan_time<<" YEARS";
+        getch();
     }
     else
     {
@@ -872,72 +885,96 @@ void account::home_loan_apply()
     }
 }
 void account::vehicle_loan_apply()
-{
-    cout << "\n VEHICLE LOAN";
-    cout << "\n ENTER THE MODEL OF THE VEHICLE";
-    cin.clear();
-    cin.sync();
-    cin.getline(vehicle_model,100);
-    cout << "\n ENTER THE VEHICLE INFORMATION";
-    cin.clear();
-    cin.sync();
-    cin.getline(vehicle_info,500);
-    cout << "\n ENTER YOUR CURRENT INCOME:- \t";
-    cin >> current_income;
-    cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
-    cin >> vehicleloan_principal;
-    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
-    cin >> vehicleloan_time;
-    //cout << "\n DO YOU WANT VEHICLE INSURANCE";
+{   
+    if(vehicleloan_totalamount==0)
+    {
+        cout << "\n VEHICLE LOAN";
+        cout << "\n ENTER YOUR CURRENT INCOME:- \t";
+        cin >> current_income;
+        cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
+        cin >> vehicleloan_principal;
+        cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+        cin >> vehicleloan_time;
+        vehicleloan_totalamount=vehicleloan_principal+((vehicleloan_principal*vehicleloan_rate*vehicleloan_time)/100);
+        cout<<"\n YOU HAVE TO PAY BACK "<<vehicleloan_totalamount<<" IN "<<vehicleloan_time<<" YEARS";
+
+    }
+    else
+    {
+        cout<<"\n FIRST PAY EXISTING LOAN THEN APPLY FOR NEW ONE";
+        getch();
+    }
 }
 void account::gold_loan_apply()
-{
-    cout << "\n GOLD LOAN";
-    cout << "\n CURRENT PRICE OF GOLD :-";
-    cout << "\n Rs.46,000 per 10gram";
-    cout << "\n ENTER THE AMOUNT OF GOLD YOU ARE LENDING(IN GRAM)";
-    cin >> gold_amount;
-    cout << "\n THE RATE OF INTEREST IS 5%";
-    goldloan_value = gold_amount*4370;
-    cout << "\n THE AMOUNT YOU GET FROM LENDING THE GOLD:- \t" << goldloan_value ;
-    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO REPAY THE AMOUNT:-";
-    cin >> goldloan_time;
+{   
+    if(goldloan_totalamount==0)
+    {
+        cout << "\n GOLD LOAN";
+        cout << "\n ENTER THE AMOUNT OF GOLD YOU ARE LENDING(IN GRAM)";
+        cin >> gold_amount;
+        cout << "\n THE RATE OF INTEREST IS 5%";
+        goldloan_value = gold_amount*4370;
+        cout << "\n THE AMOUNT YOU GET FROM LENDING THE GOLD:- \t" << goldloan_value ;
+        cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO REPAY THE AMOUNT:-";
+        cin >> goldloan_time;
+        goldloan_totalamount=goldloan_principal+((goldloan_principal*goldloan_rate*goldloan_time)/100);
+        cout<<"\n YOU HAVE TO PAY BACK "<<vehicleloan_totalamount<<" IN "<<vehicleloan_time<<" YEARS";
+    }
+    else
+    {
+        cout<<"\n FIRST PAY EXISTING LOAN THEN APPLY FOR NEW ONE";
+        getch();
+    }
 }
 void account::edu_loan_apply()
-{
-    cout << "\n EDUCATION LOAN";
-    cout << "\n ENTER YOUR FIELD OF EDUCATION";
-    cin.clear();
-    cin.sync();
-    cin.getline(edu_field,100);
-    cout << "\n ENTER YOUR EDUCTION COURSE INFORMATION";
-    cin.clear();
-    cin.sync();
-    cin.getline(edu_info,500);
-    cout << "\n ENTER COURSE DURATION(IN MONTHS)";
-    cin >> edu_duration;
-    cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
-    cin >> edu_fee;
-    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
-    cin >> edu_time;
+{   
+    if(eduloan_totalamount==0)
+    {
+        cout << "\n EDUCATION LOAN";
+        cout << "\n ENTER YOUR FIELD OF EDUCATION";
+        cin.clear();
+        cin.sync();
+        cin.getline(edu_field,100);
+        cout << "\n ENTER COURSE DURATION(IN MONTHS)";
+        cin >> edu_duration;
+        cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
+        cin >> eduloan_principal;
+        cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+        cin >> edu_time;
+        eduloan_totalamount=eduloan_principal+((vehicleloan_principal*vehicleloan_rate*vehicleloan_time)/100);
+        cout<<"\n YOU HAVE TO PAY BACK "<<vehicleloan_totalamount<<" IN "<<vehicleloan_time<<" YEARS";
+    }
+    else
+    {
+        cout<<"\n FIRST PAY EXISTING LOAN THEN APPLY FOR NEW ONE";
+        getch();
+    }
 }
 void account::agri_loan_apply()
 {
-    cout << "\n AGRICULTURE LOAN";
-    cout << "\n ENTER THE CORPS GROWN IN THE FIELD";
-    cin.clear();
-    cin.sync();
-    cin.getline(agri_crop,200);
-    cout << "\n ENTER THE INFO OF CROPS AND FIELD";
-    cin.clear();
-    cin.sync();
-    cin.getline(agri_info,800);
-    cout << "\n ENTER YOUR AREA OF THE FIELD";
-    cin >> agri_area;
-    cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
-    cin >> agri_amount;
-    cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
-    cin >> agri_time;
+    if(agroloan_totalamount==0)
+    {
+        cout << "\n AGRICULTURE LOAN";
+        cout << "\n ENTER THE CORPS GROWN IN THE FIELD";
+        cin.clear();
+        cin.sync();
+        cin.getline(agri_crop,200);
+        cout << "\n ENTER THE INFO OF CROPS AND FIELD";
+        cin.clear();
+        cin.sync();
+        cin.getline(agri_info,800);
+        cout << "\n ENTER YOUR AREA OF THE FIELD";
+        cin >> agri_area;
+        cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
+        cin >> agri_amount;
+        cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+        cin >> agri_time;
+    }
+    else
+    {
+        cout<<"\n FIRST PAY EXISTING LOAN THEN APPLY FOR NEW ONE";
+        getch();
+    }
 }
 //functions defination regarding LOAN ends here
 
@@ -1148,18 +1185,18 @@ void account::invest_intro()
         cin>>choice;
         switch (choice)
         {
-        case 1:
-            saving_funds();
-            break;
-        case 2:
-            pension_funds();
-            break;
-        case 3:
-            gold_funds();
-            break;
-        default:
-            cout<<"\nWRONG CHOICE";
-            getch();
+            case 1:
+                saving_funds();
+                break;
+            case 2:
+                pension_funds();
+                break;
+            case 3:
+                gold_funds();
+                break;
+            default:
+                cout<<"\nWRONG CHOICE";
+                getch();
         }
 
     } while (choice > 9);
