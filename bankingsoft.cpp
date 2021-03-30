@@ -179,7 +179,7 @@ void account::first_window()
         cin >> choice;
 
         switch (choice)
-    {
+        {
         case 1:
             show_details();
             break;
@@ -292,6 +292,7 @@ void account::change_det()
     int choice;
     do
     {
+        system("cls");
         cout << "\n WHAT YOU WANT TO CHANGE:-";
         cout << "\n 01.NAME";
         cout << "\n 02.FATHER'S NAME";
@@ -480,7 +481,9 @@ void account::electricity_pay()
     int amount;
     long ivrs_no;
     int pin1;
-    cout << "ENTER YOUR IVRS NO.:-\t";
+    system("CLS");
+    cout << "\nELECTRICITY BILL PAYMENT:-\t";
+    cout << "\nENTER YOUR IVRS NO.:-\t";
     cin >> ivrs_no;
     cout << "\nENTER THE AMOUNT TO BE PAID:-\t";
     cin >> amount;
@@ -1399,58 +1402,60 @@ int main()
         cin >> choice;
         switch (choice)
         {
-        case 1:
-            customer[opening_no].get_det();
-            customer[opening_no].allot_acc_no(opening_no);
-            opening_no++;
-            break;
+            case 1:
+                customer[opening_no].get_det();
+                customer[opening_no].allot_acc_no(opening_no);
+                opening_no++;
+                break;
 
-        case 2:
-            system("CLS");
-            cout << "\n ENTER YOUR USER NAME:-\t";
-            cin.clear();
-            cin.sync();
-            cin.getline(check_user,50);
-            cout << "\n ENTER YOUR PASSWORD:-\t";
-            cin.clear();
-            cin.sync();
-            cin.getline(check_pass,50);
-            for(int i=0;i<opening_no;i++)
-            {
-                int x=customer[i].login_check(check_user,check_pass,i);
-                if(x!=-50){
-                    current_no=i;
-                    break;
-                }
-                if(x=-50){
-                    current_no=-50;
-                }
-            }
-            if(current_no!=-50){
-                customer[current_no].first_window();
-            }
-            if(current_no==-50){
+            case 2:
                 system("CLS");
-                cout << "\n WRONG USERNAME OR PASSWORD";    
-                getch();            
-            }
-             break;
+                cout << "\n ENTER YOUR USER NAME:-\t";
+                cin.clear();
+                cin.sync();
+                cin.getline(check_user,50);
+                cout << "\n ENTER YOUR PASSWORD:-\t";
+                cin.clear();
+                cin.sync();
+                cin.getline(check_pass,50);
+                for(int i=0;i<opening_no;i++)
+                {
+                    int x=customer[i].login_check(check_user,check_pass,i);
+                    if(x!=-50){
+                        current_no=i;
+                        break;
+                    }
+                    if(x=-50){
+                        current_no=-50;
+                    }
+                }
+                if(current_no!=-50)
+                {
+                    customer[current_no].first_window();
+                }
+                if(current_no==-50)
+                {
+                    system("CLS");
+                    cout << "\n WRONG USERNAME OR PASSWORD";    
+                    getch();            
+                }
+                break;
 
-        case 3:
-                int admin_log_check;
-                admin_log_check=admin_login();
-                if(admin_log_check==1)
-                {
-                    admin_main_menu(opening_no,customer);
-                }
-                else
-                {
-                    cout<<"\n WRONG ADMIN USERNAME OR PASSWORD";
-                    getch();
-                }
-            break;
-        case 4:
-            exit(0);
+            case 3:
+                    int admin_log_check;
+                    admin_log_check=admin_login();
+                    if(admin_log_check==1)
+                    {
+                        admin_main_menu(opening_no,customer);
+                    }
+                    else
+                    {
+                        cout<<"\n WRONG ADMIN USERNAME OR PASSWORD";
+                        getch();
+                    }
+                break;
+            case 4:
+                exit(0);
             
 
         default:
