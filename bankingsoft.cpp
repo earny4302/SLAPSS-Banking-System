@@ -21,6 +21,7 @@ public:
     int pin_no;
     long long acc_bal;
     int account_no;
+    int activity=1;
     //variables regarding loans starts
     //variables regarding home loan starts
     char homeloan_newadd[200];
@@ -90,6 +91,13 @@ public:
     void deposit();
     void show_bal();
     int check_pin(int);
+    void close_acc()
+    {
+        cout<<"\nACCOUNT "<<account_no<<" IS NOW CLOSED. COLLECT YOUR REMANING ACCOUNT BALANCE FROM BRANCH.";
+        login_pass[0]=50;
+        login_user[0]=50;
+        activity=0;
+    }
 
     //function prototype regarding BASICS ends here
 
@@ -172,9 +180,10 @@ void account::first_window()
         cout << "\n 08.APPLY FOR LOAN";
         cout << "\n 09.DONATION";
         cout << "\n 10.INVEST";
-        cout << "\n 11.TALK TO CUSTOMER CARE";
-        cout << "\n 12.BACK TO MAIN MENU";
-        cout << "\n 13.EXIT PROGRAM";
+        cout << "\n 11.CLOSE ACCOUNT";
+        cout << "\n 12.TALK TO CUSTOMER CARE";
+        cout << "\n 13.BACK TO MAIN MENU";
+        cout << "\n 14.EXIT PROGRAM";
         cout << "\n ENTER YOUR CHOICE(1-13):-";
         cin >> choice;
 
@@ -212,14 +221,18 @@ void account::first_window()
             invest_intro();
             break;
         case 11:
+            close_acc();
+            getch();
+            break;
+        case 12:
             cout<<"\n WE ARE HERE FOR YOU 24*7";
             cout<<"\n CONTACT US ON 7999538548";
             getch();
             break;
-         case 12:
+         case 13:
 
             break;
-         case 13:
+         case 14:
             exit(0);
             break;
 
@@ -227,7 +240,7 @@ void account::first_window()
             cout << "\n WRONG CHOICE";
             getch();
         }
-    } while (choice != 12);
+    } while (choice != 13);
 
 
 }
@@ -275,26 +288,28 @@ void account::allot_acc_no(int temp){
 }
 
 void account::show_details(){
-    cout<<"\n\n\t ACCOUNT NO:-"<<account_no;
-    cout<<"\n\t\t BASIC DETAILS:- ";
-    cout<<"\n\t NAME OF ACCOUNT HOLDER:-"<<my_name;
-    cout<<"\n\t FATHER'S NAME OF ACCOUNT HOLDER:-"<<father_n;
-    cout<<"\n\t MOTHER'S NAME OF ACCOUNT HOLDER:-"<<mother_n;
-    cout<<"\n\t ADDRESS OF ACCOUNT HOLDER:-"<<address;
-    cout<<"\n\t NOMINEE OF ACCOUNT HOLDER:-"<<nominee;
-    cout<<"\n\t TOTAL BALANCE OF ACCOUNT HOLDER:-"<<acc_bal;
-    cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<fixed<<mob_no;
-    cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<fixed<<addhar_no;
-    cout<<"\n\n\t\t LOAN DETAILS:- ";
-    cout<<"\n\t VEHICLE LOAN:-"<<vehicleloan_totalamount;
-    cout<<"\n\t GOLD LOAN:-"<<goldloan_totalamount;
-    cout<<"\n\t EDUCATION LOAN:-"<<eduloan_totalamount;
-    cout<<"\n\t AGRICULTURE LOAN:-"<<agroloan_totalamount;
-    cout<<"\n\n\t\t INVESTMENT DETAILS:-";
-    cout<<"\n\n\t\t SAVINGS FUND:-" <<sav_funds;
-    cout<<"\n\n\t\t PENSION FUND:-" <<pen_funds;
-    cout<<"\n\n\t\t GOLD FUND:-" <<gold_fund;
-    getch();
+    if(activity==1){
+        cout<<"\n\n\t ACCOUNT NO:-"<<account_no;
+        cout<<"\n\t\t BASIC DETAILS:- ";
+        cout<<"\n\t NAME OF ACCOUNT HOLDER:-"<<my_name;
+        cout<<"\n\t FATHER'S NAME OF ACCOUNT HOLDER:-"<<father_n;
+        cout<<"\n\t MOTHER'S NAME OF ACCOUNT HOLDER:-"<<mother_n;
+        cout<<"\n\t ADDRESS OF ACCOUNT HOLDER:-"<<address;
+        cout<<"\n\t NOMINEE OF ACCOUNT HOLDER:-"<<nominee;
+        cout<<"\n\t TOTAL BALANCE OF ACCOUNT HOLDER:-"<<acc_bal;
+        cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<fixed<<mob_no;
+        cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<fixed<<addhar_no;
+        cout<<"\n\n\t\t LOAN DETAILS:- ";
+        cout<<"\n\t VEHICLE LOAN:-"<<vehicleloan_totalamount;
+        cout<<"\n\t GOLD LOAN:-"<<goldloan_totalamount;
+        cout<<"\n\t EDUCATION LOAN:-"<<eduloan_totalamount;
+        cout<<"\n\t AGRICULTURE LOAN:-"<<agroloan_totalamount;
+        cout<<"\n\n\t\t INVESTMENT DETAILS:-";
+        cout<<"\n\t SAVINGS FUND:-" <<sav_funds;
+        cout<<"\n\t PENSION FUND:-" <<pen_funds;
+        cout<<"\n\t GOLD FUND:-" <<gold_fund;
+        getch();
+    }
     
 }
 void account::change_det()
@@ -911,6 +926,7 @@ void account::vehicle_loan_apply()
         cin >> vehicleloan_time;
         vehicleloan_totalamount=vehicleloan_principal+((vehicleloan_principal*vehicleloan_rate*vehicleloan_time)/100);
         cout<<"\n YOU HAVE TO PAY BACK "<<vehicleloan_totalamount<<" IN "<<vehicleloan_time<<" YEARS";
+        getch();
 
     }
     else
@@ -934,6 +950,7 @@ void account::gold_loan_apply()
         cin >> goldloan_time;
         goldloan_totalamount=goldloan_principal+((goldloan_principal*goldloan_rate*goldloan_time)/100);
         cout<<"\n YOU HAVE TO PAY BACK "<<goldloan_totalamount<<" IN "<<goldloan_time<<" YEARS";
+        getch();
     }
     else
     {
@@ -958,6 +975,7 @@ void account::edu_loan_apply()
         cin >> edu_time;
         eduloan_totalamount=eduloan_principal+((eduloan_principal*eduloan_rate*edu_time)/100);
         cout<<"\n YOU HAVE TO PAY BACK "<<eduloan_totalamount<<" IN "<<edu_time<<" YEARS";
+        getch();
     }
     else
     {
@@ -986,6 +1004,7 @@ void account::agri_loan_apply()
         cin >> agri_time;
         agroloan_totalamount=agri_amount+((agri_amount*agriloan_rate*agri_time)/100);
         cout<<"\n YOU HAVE TO PAY BACK "<<agroloan_totalamount<<" IN "<<agri_time<<" YEARS";
+        getch();
     }
     else
     {
