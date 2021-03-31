@@ -1277,7 +1277,7 @@ void account::pension_funds()
     int x=check_pin(pin_no);
     
     if(x==1){
-        cout<<"\nENTER THE AMOUNT DEPOSITED FOR SAVINGS FUND:-\t";
+        cout<<"\nENTER THE AMOUNT DEPOSITED FOR PENSION FUND:-\t";
         cin>>amount;
         
         if(amount<acc_bal){
@@ -1305,7 +1305,7 @@ void account::gold_funds()
     int x=check_pin(pin_no);
     
     if(x==1){
-                cout<<"\nENTER THE AMOUNT DEPOSITED FOR SAVINGS FUND:-\t";
+                cout<<"\nENTER THE AMOUNT DEPOSITED FOR PENSION FUND:-\t";
                 cin>>amount;
                
                 if(amount<acc_bal){
