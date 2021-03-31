@@ -54,11 +54,11 @@ public:
     long eduloan_principal;
     int edu_time;
     long eduloan_totalamount=0;
-    int edUloan_rate=3;
+    int eduloan_rate=3;
     //variables regarding education loan ends
     //varialbes regarding agricultural loan starts
     char agri_crop[200];
-    char agri_info[800];
+    char agri_address[800];
     float agri_area;
     long agri_amount;
     int agri_time;
@@ -276,6 +276,7 @@ void account::allot_acc_no(int temp){
 
 void account::show_details(){
     cout<<"\n\n\t ACCOUNT NO:-"<<account_no;
+    cout<<"\n\t\t BASIC DETAILS:- ";
     cout<<"\n\t NAME OF ACCOUNT HOLDER:-"<<my_name;
     cout<<"\n\t FATHER'S NAME OF ACCOUNT HOLDER:-"<<father_n;
     cout<<"\n\t MOTHER'S NAME OF ACCOUNT HOLDER:-"<<mother_n;
@@ -284,6 +285,15 @@ void account::show_details(){
     cout<<"\n\t TOTAL BALANCE OF ACCOUNT HOLDER:-"<<acc_bal;
     cout<<"\n\t MOBILE NO. ACCOUNT HOLDER:-"<<fixed<<mob_no;
     cout<<"\n\t ADDHAR NO. OF ACCOUNT HOLDER:-"<<fixed<<addhar_no;
+    cout<<"\n\n\t\t LOAN DETAILS:- ";
+    cout<<"\n\t VEHICLE LOAN:-"<<vehicleloan_totalamount;
+    cout<<"\n\t GOLD LOAN:-"<<goldloan_totalamount;
+    cout<<"\n\t EDUCATION LOAN:-"<<eduloan_totalamount;
+    cout<<"\n\t AGRICULTURE LOAN:-"<<agroloan_totalamount;
+    cout<<"\n\n\t\t INVESTMENT DETAILS:-";
+    cout<<"\n\n\t\t SAVINGS FUND:-" <<sav_funds;
+    cout<<"\n\n\t\t PENSION FUND:-" <<pen_funds;
+    cout<<"\n\n\t\t GOLD FUND:-" <<gold_fund;
     getch();
     
 }
@@ -646,7 +656,7 @@ void account::home_loan_pay()
     switch(choice)
     {
         case 1:
-            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY:-\t";
             cin>>amount;
             pay(amount);
             homeloan_totalamount=homeloan_totalamount-amount;
@@ -668,7 +678,7 @@ void account::vehicle_loan_pay()
     switch(choice)
     {
         case 1:
-            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY:-\t";
             cin>>amount;
             pay(amount);
             vehicleloan_totalamount=vehicleloan_totalamount-amount;
@@ -691,7 +701,7 @@ void account::gold_loan_pay()
     switch(choice)
     {
         case 1:
-            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY;-\t";
             cin>>amount;
             pay(amount);
             goldloan_totalamount=goldloan_totalamount-amount;
@@ -714,7 +724,7 @@ void account::edu_loan_pay()
     switch(choice)
     {
         case 1:
-            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY:-\t";
             cin>>amount;
             pay(amount);
             eduloan_totalamount=eduloan_totalamount-amount;
@@ -737,7 +747,7 @@ void account::agri_loan_pay()
     switch(choice)
     {
         case 1:
-            cout<<"\nENTER AMOUNT YOU WANT TO PAY";
+            cout<<"\nENTER AMOUNT YOU WANT TO PAY:-\t";
             cin>>amount;
             pay(amount);
             agroloan_totalamount=agroloan_totalamount-amount;
@@ -828,11 +838,11 @@ void account::loan_apply_intro()
     do
     {   system("CLS");
         cout << "\nFOLLOWING LOAN ARE AVAILABLE IN OUR BANK:-"  ;
-        cout << "\n01.HOME LOAN" ;
-        cout << "\n02.VEHICLE LOAN";
-        cout << "\n03.GOLD LOAN";
-        cout << "\n04.EDUCATION LOAN";
-        cout << "\n05.AGRICULTURE LOAN";
+        cout << "\n01.HOME LOAN (Rate- 8%)" ;
+        cout << "\n02.VEHICLE LOAN(Rate- 9%)";
+        cout << "\n03.GOLD LOAN(Rate- 5%)";
+        cout << "\n04.EDUCATION LOAN(Rate- 3%)";
+        cout << "\n05.AGRICULTURE LOAN(Rate- 5%)";
         cout << "\n06.BACK TO PREVIOUS MENU";
         cout << "\nENTER YOUR CHOICE(1-6):-\t";
         cin >> choice;
@@ -919,10 +929,11 @@ void account::gold_loan_apply()
         cout << "\n THE RATE OF INTEREST IS 5%";
         goldloan_value = gold_amount*4370;
         cout << "\n THE AMOUNT YOU GET FROM LENDING THE GOLD:- \t" << goldloan_value ;
+        goldloan_principal=goldloan_value;
         cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO REPAY THE AMOUNT:-";
         cin >> goldloan_time;
         goldloan_totalamount=goldloan_principal+((goldloan_principal*goldloan_rate*goldloan_time)/100);
-        cout<<"\n YOU HAVE TO PAY BACK "<<vehicleloan_totalamount<<" IN "<<vehicleloan_time<<" YEARS";
+        cout<<"\n YOU HAVE TO PAY BACK "<<goldloan_totalamount<<" IN "<<goldloan_time<<" YEARS";
     }
     else
     {
@@ -945,8 +956,8 @@ void account::edu_loan_apply()
         cin >> eduloan_principal;
         cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
         cin >> edu_time;
-        eduloan_totalamount=eduloan_principal+((vehicleloan_principal*vehicleloan_rate*vehicleloan_time)/100);
-        cout<<"\n YOU HAVE TO PAY BACK "<<vehicleloan_totalamount<<" IN "<<vehicleloan_time<<" YEARS";
+        eduloan_totalamount=eduloan_principal+((eduloan_principal*eduloan_rate*edu_time)/100);
+        cout<<"\n YOU HAVE TO PAY BACK "<<eduloan_totalamount<<" IN "<<edu_time<<" YEARS";
     }
     else
     {
@@ -959,20 +970,22 @@ void account::agri_loan_apply()
     if(agroloan_totalamount==0)
     {
         cout << "\n AGRICULTURE LOAN";
-        cout << "\n ENTER THE CORPS GROWN IN THE FIELD";
+        cout << "\n ENTER THE CORPS GROWN IN THE FIELD:-\t";
         cin.clear();
         cin.sync();
         cin.getline(agri_crop,200);
-        cout << "\n ENTER THE INFO OF CROPS AND FIELD";
+        cout << "\n ENTER THE ADDRESS FIELD:-\t";
         cin.clear();
         cin.sync();
-        cin.getline(agri_info,800);
-        cout << "\n ENTER YOUR AREA OF THE FIELD";
+        cin.getline(agri_address,800);
+        cout << "\n ENTER YOUR AREA OF THE FIELD:-\t";
         cin >> agri_area;
         cout << "\n ENTER THE AMOUNT YOU NEED:-\t";
         cin >> agri_amount;
-        cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-";
+        cout << "\n ENTER THE TIME(IN YEARS) NEEDED TO FULFILL AMOUNT:-\t";
         cin >> agri_time;
+        agroloan_totalamount=agri_amount+((agri_amount*agriloan_rate*agri_time)/100);
+        cout<<"\n YOU HAVE TO PAY BACK "<<agroloan_totalamount<<" IN "<<agri_time<<" YEARS";
     }
     else
     {
@@ -1133,46 +1146,49 @@ void account::donate_intro()
 {
     int donate, choose;
     do{
-    cout << "Donations \n";
-    cout << "1). CM Relief Fund \n";
-    cout << "2). PM Relief Fund \n";
-    cout << "3). Army Charity Fund \n";
-    cout << "4). SLAPSS Charity Fund \n";
-    cout << "Press a number \n";
-    cin >> donate;
-    switch (donate)
-    {
-    case 1:
-        donatef1();
-         cout << "1). Back to Donation  \n";
-    cout << "2). Exit \n";
-    cin >> choose;
-        break;
+        
+        cout << "Donations \n";
+        cout << "1). CM Relief Fund \n";
+        cout << "2). PM Relief Fund \n";
+        cout << "3). Army Charity Fund \n";
+        cout << "4). SLAPSS Charity Fund \n";
+        cout << "Press a number \n";
+        cin >> donate;
+        switch (donate)
+        {
+            case 1:
+                donatef1();
+                cout << "\n1). Back to Donation  \n";
+            cout << "2). Exit \n";
+            cin >> choose;
+                break;
 
-    case 2:
-        donatef2();
-         cout << "1). Back to Donation  \n";
-    cout << "2). Exit \n";
-    cin >> choose;
-        break;
+            case 2:
+                donatef2();
+                cout << "\n1). Back to Donation  \n";
+            cout << "2). Exit \n";
+            cin >> choose;
+                break;
 
-    case 3:
-        donatef3();
-         cout << "1). Back to Donation  \n";
-    cout << "2). Exit \n";
-    cin >> choose;
-        break;
+            case 3:
+                donatef3();
+                cout << "\n1). Back to Donation  \n";
+            cout << "2). Exit \n";
+            cin >> choose;
+                break;
 
-    case 4:
-        donatef4();
-         cout << "1). Back to Donation  \n";
-    cout << "2). Exit \n";
-    cin >> choose;
-        break;
+            case 4:
+                donatef4();
+                cout << "\n1). Back to Donation  \n";
+            cout << "2). Exit \n";
+            cin >> choose;
+                break;
 
-    default:
-        break;
-    }}
+            default:
+
+                break;
+        }
+    }
     while (choose == 1);
 }
 //function defination regarding DONATION ends here
@@ -1217,7 +1233,8 @@ void account::saving_funds()
     if(x==1){
         cout<<"\nENTER THE AMOUNT DEPOSITED FOR SAVINGS FUND:-\t";
         cin>>amount;
-        if(amount<acc_bal){
+        if(amount<acc_bal)
+                {
                     acc_bal=acc_bal-amount;
                     sav_funds=sav_funds+amount;
                     cout<<"YOUR TOTAL SAVINGS  FUNDS ARE: "<<sav_funds;
