@@ -424,7 +424,8 @@ void account::pay_intro()
 {
     int choice;
     do
-    {
+    {   
+        system("cls");
         cout << "\n WHICH BILL YOU WANT TO PAY:-" ;
         cout << "\n 01.ELECTRICITY";
         cout << "\n 02.WATER";
